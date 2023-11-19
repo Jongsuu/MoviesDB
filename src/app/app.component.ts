@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-movies';
+  title = 'Angular Movies';
+  scrolled: boolean = false;
+
+  @HostListener("window:scroll", ["$event"]) onScroll(): void {
+    this.scrolled = window.scrollY > 20;
+  }
 }

@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+:root {
+  --primary-color: #dc114b;
+  --complementary-color: #11dca2;
+  --analogous-color-1: #dc11b0;
+  --analogous-color-2: #dc3d11;
+  --triadic-color-1: #dca211;
+  --triadic-color-2: #4bdc11;
+}
+
+body {
+  font-family: Roboto, Sans-Serif;
+  scroll-behavior: smooth;
+  background-image: url("src/assets/img/cool-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ocu {
+  display: none !important;
+}

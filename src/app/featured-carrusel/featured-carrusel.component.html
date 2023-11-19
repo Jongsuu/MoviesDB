@@ -1,0 +1,6 @@
+<div>
+  <h1 class="featured-carrusel-title">{{ carruselTitle }}</h1>
+  <ul class="featured-carrusel" *ngIf="list">
+    <app-featured-item *ngFor="let item of list" [item]="item"></app-featured-item>
+  </ul>
+</div>
