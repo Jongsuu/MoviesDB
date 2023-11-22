@@ -1,0 +1,68 @@
+.carrusel-item {
+  flex: 0 0 100%;
+  cursor: pointer;
+  box-shadow: 2px 7px 15px -2px #000000;
+  border-radius: 1rem;
+  transition: all 0.5s;
+  position: relative;
+  min-width: 250px;
+  max-width: 325px;
+  width: 300px;
+  height: 175px;
+  transition: transform 0.3s ease-in-out;
+  background-size: cover;
+  background-repeat: no-repeat;
+  scroll-snap-align: center;
+  transform: scale(1);
+}
+
+.carrusel-item:hover {
+  transform: scale(1.1);
+  background-color: #d97cc5;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.carrusel-item-container {
+  display: none;
+}
+
+.carrusel-item-card {
+  color: #fff;
+  padding: 10px;
+  border-radius: 0 0 1rem 1rem;
+  background-color: #d97cc5;
+}
+
+.carrusel-item-card p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-bottom: 0;
+}
+
+.carrusel-item-image {
+  border-radius: 1rem 1rem 0 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.carrusel-item-card h2 {
+  margin: 0;
+}
+
+.carrusel-item-card h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.carrusel-item:hover .carrusel-item-container {
+  display: block;
+  justify-items: stretch;
+}
+
+.carrusel-item-card-a {
+  display: flex;
+}

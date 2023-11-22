@@ -34,7 +34,7 @@ export class MoviesService {
   }
 
   getLatestMoviesCatalog() {
-    return this.http.get(this.baseUrl + `/upcoming`, {
+    return this.http.get<MovieCatalogResponse>(this.baseUrl + `/movie/upcoming`, {
       headers: {
         Authorization: this.getAuthorization()
       },

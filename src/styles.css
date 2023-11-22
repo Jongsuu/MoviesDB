@@ -16,6 +16,8 @@ body {
   background-image: url("src/assets/img/cool-background.png");
   background-repeat: no-repeat;
   background-size: cover;
+  box-sizing: 0;
+  margin: 0;
 }
 
 .ocu {

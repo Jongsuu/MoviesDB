@@ -9,14 +9,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FeaturedCarruselComponent } from './featured-carrusel/featured-carrusel.component';
 import { FeaturedItemComponent } from './featured-item/featured-item.component';
+import { CarruselComponent } from './carrusel/carrusel.component';
+import { CarruselItemComponent } from './carrusel-item/carrusel-item.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
     NavbarComponent,
     MoviesComponent,
     FeaturedCarruselComponent,
-    FeaturedItemComponent
+    FeaturedItemComponent,
+    CarruselComponent,
+    CarruselItemComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

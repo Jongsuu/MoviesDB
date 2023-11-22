@@ -10,7 +10,7 @@
   height: 100%;
   max-height: 350px;
   width: 250px;
-  transition: width 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -25,7 +25,7 @@
   border-radius: 0 0 1rem 1rem;
   color: #fff;
   padding: 10px;
-  background-color: rgba(220, 17, 75, 0.5);
+  background-color: rgba(220, 17, 75, 0.7);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -58,4 +58,15 @@
 
 .featured-item-card-a {
   display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0 0.5rem;
+}
+
+.featured-item-card-b {
+  border-radius: 50%;
+  background-color: var(--triadic-color-2);
+  color: #fff;
+  padding: 0.25rem;
+  margin: 0;
 }

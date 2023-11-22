@@ -9,6 +9,7 @@ import { Movie } from '../interfaces/movies/movies.interfaces';
 })
 export class MoviesComponent implements OnInit {
   featuredMovies: Movie[] = [];
+  latestMovies: Movie[] = [];
 
   constructor(private moviesService: MoviesService) {
   }
@@ -17,6 +18,11 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getPopularMoviesCatalog().subscribe((response) => {
       console.log(response.results);
       this.featuredMovies = response.results;
+    });
+
+    this.moviesService.getLatestMoviesCatalog().subscribe((response) => {
+      console.log(response.results);
+      this.latestMovies = response.results;
     });
   }
 }

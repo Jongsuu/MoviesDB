@@ -16,6 +16,7 @@ export class FeaturedItemComponent implements OnInit {
   constructor() {
     this.baseImageUrl = environment.baseImgUrl;
   }
+
   ngOnInit(): void {
     this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
   }
