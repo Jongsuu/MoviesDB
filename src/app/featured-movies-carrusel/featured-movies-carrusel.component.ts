@@ -2,13 +2,14 @@ import { Component, Input } from '@angular/core';
 import { Movie } from '../interfaces/movies/movies.interfaces';
 
 @Component({
-  selector: 'app-featured-carrusel',
-  templateUrl: './featured-carrusel.component.html',
-  styleUrls: ['./featured-carrusel.component.css']
+  selector: 'app-featured-movies-carrusel',
+  templateUrl: './featured-movies-carrusel.component.html',
+  styleUrls: ['./featured-movies-carrusel.component.css']
 })
-export class FeaturedCarruselComponent {
+export class FeaturedMoviesCarruselComponent {
   @Input() list: Movie[] = [];
   @Input() carruselTitle: string | undefined;
+  @Input() seeMoreLink: string | undefined;
   hideLeftArrow = true;
   hideRightArrow = true;
   canHoverItem = true;
@@ -19,9 +20,9 @@ export class FeaturedCarruselComponent {
   onClickLeftArrow(carrusel: HTMLUListElement) {
     if (!this.hideLeftArrow) {
       this.canHoverItem = false;
-      let newIndex = this.currentScrolledItem - 8;
+      let newIndex = this.currentScrolledItem - 5;
 
-      if (newIndex < 5)
+      if (newIndex <= 5)
         newIndex = 0;
 
       this.currentScrolledItem = newIndex;
@@ -36,28 +37,19 @@ export class FeaturedCarruselComponent {
     }
   }
 
-  private scrollCarrusel(carrusel: HTMLUListElement) {
-    console.log(this.currentScrolledItem);
-    carrusel.children[this.currentScrolledItem].scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-
-    setTimeout(() => {
-      this.canHoverItem = true;
-    }, 1000);
-  }
-
   onClickRightArrow(carrusel: HTMLUListElement) {
     if (!this.hideRightArrow) {
       this.canHoverItem = false;
-      let newIndex = this.currentScrolledItem + 8;
+      let newIndex = this.currentScrolledItem + 5;
 
-      if (newIndex >= this.list.length)
-        newIndex = this.list.length - 1;
+      if (newIndex >= this.list.length - 5)
+        newIndex = this.list.length - 5;
 
       this.currentScrolledItem = newIndex;
       this.scrollCarrusel(carrusel);
 
       setTimeout(() => {
-        this.hideRightArrow = newIndex === this.list.length - 1;
+        this.hideRightArrow = newIndex === this.list.length - 5;
         this.hideLeftArrow = false;
         this.arrowsState.hideRightArrow = this.hideRightArrow;
         this.arrowsState.hideLeftArrow = this.hideLeftArrow;
@@ -73,5 +65,13 @@ export class FeaturedCarruselComponent {
   onMouseExit() {
     this.hideRightArrow = true;
     this.hideLeftArrow = true;
+  }
+
+  private scrollCarrusel(carrusel: HTMLUListElement) {
+    carrusel.children[this.currentScrolledItem].scrollIntoView({ behavior: "smooth", block: "center", inline: "start" });
+
+    setTimeout(() => {
+      this.canHoverItem = true;
+    }, 1000);
   }
 }

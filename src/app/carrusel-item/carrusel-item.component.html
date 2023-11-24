@@ -1,6 +1,5 @@
-<li class="carrusel-item" *ngIf="item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()">
-  <img src="{{getImageSrc()}}" class="carrusel-item-image" />
-  <a class="carrusel-item-container" [class.show]="hovered" [class.hide]="hide">
+<li class="carrusel-item" *ngIf="item" [style.background-image]="activeBackgroundStyle">
+  <a class="carrusel-item-container">
     <div class="carrusel-item-card">
       <h3 class="carrusel-item-title">{{ item.title }}</h3>
       <div class="carrusel-item-card-a">

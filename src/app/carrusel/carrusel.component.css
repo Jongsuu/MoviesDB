@@ -9,11 +9,12 @@
   gap: 0 2rem;
   padding: 1rem 1.5rem 1.5rem;
   margin: 0;
-  height: 100%;
+  height: 185px;
   list-style: none;
   overflow-x: hidden;
   overflow-y: hidden;
   scroll-snap-type: x proximity;
+  position: relative;
 }
 
 .carrusel-container {
@@ -31,6 +32,19 @@
   padding: 2rem 1rem;
   transition: all 0.3s ease-in-out;
   z-index: 1;
+  opacity: 1;
+}
+
+.carrusel-arrow.hide {
+  opacity: 0;
+  cursor: default;
+}
+
+.carrusel-arrow i {
+  font-weight: 200;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  padding: 0;
 }
 
 .carrusel-arrow-left {
@@ -41,13 +55,6 @@
 .carrusel-arrow-right {
   right: 0.5rem;
   border-radius: 0 1rem 1rem 0;
-}
-
-.carrusel-arrow i {
-  font-weight: 200;
-  font-size: 1.5rem;
-  transition: all 0.3s ease-in-out;
-  padding: 0;
 }
 
 .carrusel-arrow:hover i {

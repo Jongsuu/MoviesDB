@@ -16,8 +16,8 @@ export class NavbarComponent {
       url: "/movies"
     },
     {
-      text: "Series",
-      url: "/series"
+      text: "TV Series",
+      url: "/tv-series"
     },
     {
       text: "Artists",

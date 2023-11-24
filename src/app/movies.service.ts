@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environment/environment';
-import { MovieCatalogResponse } from './interfaces/movies/movies.interfaces';
 import { MovieDetail } from './interfaces/movies/movieDetail.interfaces';
-import { GenresListResponse } from './interfaces/common/common.interfaces';
+import { CatalogResponse, GenresListResponse } from './interfaces/common/common.interfaces';
+import { Movie } from './interfaces/movies/movies.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -30,46 +30,44 @@ export class MoviesService {
   }
 
   getPopularMoviesCatalog() {
-    return this.http.get<MovieCatalogResponse>(this.baseUrl + `/discover/movie`, {
+    return this.http.get<CatalogResponse<Movie>>(this.baseUrl + `/movie/popular`, {
       headers: {
         Authorization: this.getAuthorization()
-      },
-      params: {
-        include_adult: false,
-        include_video: false,
-        sort_by: "popularity.desc"
       }
     });
   }
 
-  getLatestMoviesCatalog() {
-    return this.http.get<MovieCatalogResponse>(this.baseUrl + `/movie/upcoming`, {
-      headers: {
-        Authorization: this.getAuthorization()
-      },
-      params: {
-        language: "en-US",
-        page: 1
-      }
-    });
-  }
-
-  getTopRatedMoviesCatalog() {
-    return this.http.get<MovieCatalogResponse>(this.baseUrl + `/movie/top_rated`, {
+  getUpcomingMoviesCatalog() {
+    return this.http.get<CatalogResponse<Movie>>(this.baseUrl + `/movie/upcoming`, {
       headers: {
         Authorization: this.getAuthorization()
       }
     });
   }
 
-  getMoviesByGenre(genre: string) {
-    return this.http.get<MovieCatalogResponse>(this.baseUrl + `/movie/upcoming`, {
+  getTopRatedMoviesCatalog() {
+    return this.http.get<CatalogResponse<Movie>>(this.baseUrl + `/movie/top_rated`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getNowPlayingMoviesCatalog() {
+    return this.http.get<CatalogResponse<Movie>>(this.baseUrl + `/movie/now_playing`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getMoviesByGenre(genreIds: string) {
+    return this.http.get<CatalogResponse<Movie>>(this.baseUrl + `/discover/movie`, {
       headers: {
         Authorization: this.getAuthorization()
       },
       params: {
-        language: "en-US",
-        page: 1
+        with_genres: genreIds
       }
     });
   }

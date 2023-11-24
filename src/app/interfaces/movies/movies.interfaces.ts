@@ -1,10 +1,3 @@
-export interface MovieCatalogResponse {
-  page: number;
-  total_pages: number;
-  total_results: number;
-  results: Movie[];
-}
-
 export interface Movie {
   adult: boolean;
   backdrop_path: string;

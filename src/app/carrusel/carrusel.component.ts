@@ -7,36 +7,59 @@ import { Movie } from '../interfaces/movies/movies.interfaces';
   styleUrls: ['./carrusel.component.css']
 })
 export class CarruselComponent {
-  @Input() list: Movie[] | undefined;
+  @Input() list: Movie[] = [];
   @Input() carruselTitle: string | undefined;
-  hideLeftArrow: boolean = true;
-  hideRightArrow: boolean = false;
+  hideLeftArrow = true;
+  hideRightArrow = true;
+
+  private arrowsState: { hideLeftArrow: boolean, hideRightArrow: boolean } = { hideLeftArrow: true, hideRightArrow: false };
+  private currentScrolledItem = 0;
 
   onClickLeftArrow(carrusel: HTMLUListElement) {
-    let newScroll = carrusel.scrollLeft - carrusel.clientWidth;
+    let newIndex = this.currentScrolledItem - 5;
 
-    if (newScroll < 0)
-      newScroll = 0;
+    if (newIndex <= 5)
+      newIndex = 0;
 
-    carrusel.scrollTo({ left: newScroll, behavior: "smooth" });
+    this.currentScrolledItem = newIndex;
+    this.scrollCarrusel(carrusel);
 
     setTimeout(() => {
-      this.hideLeftArrow = newScroll <= 0;
+      this.hideLeftArrow = this.currentScrolledItem === 0;
       this.hideRightArrow = false;
+      this.arrowsState.hideRightArrow = this.hideRightArrow;
+      this.arrowsState.hideLeftArrow = this.hideLeftArrow;
     }, 250);
   }
 
   onClickRightArrow(carrusel: HTMLUListElement) {
-    let newScroll = carrusel.scrollLeft + carrusel.clientWidth;
+    let newIndex = this.currentScrolledItem + 5;
 
-    if (newScroll > carrusel.scrollWidth)
-      newScroll = carrusel.scrollWidth;
+    if (newIndex >= this.list.length - 5)
+      newIndex = this.list.length - 5;
 
-    carrusel.scrollTo({ left: newScroll, behavior: "smooth" });
+    this.currentScrolledItem = newIndex;
+    this.scrollCarrusel(carrusel);
 
     setTimeout(() => {
-      this.hideRightArrow = newScroll >= carrusel.scrollWidth - carrusel.clientWidth;
+      this.hideRightArrow = newIndex === this.list.length - 5;
       this.hideLeftArrow = false;
+      this.arrowsState.hideRightArrow = this.hideRightArrow;
+      this.arrowsState.hideLeftArrow = this.hideLeftArrow;
     }, 250);
+  }
+
+  onMouseOver() {
+    this.hideLeftArrow = this.arrowsState.hideLeftArrow;
+    this.hideRightArrow = this.arrowsState.hideRightArrow;
+  }
+
+  onMouseExit() {
+    this.hideRightArrow = true;
+    this.hideLeftArrow = true;
+  }
+
+  private scrollCarrusel(carrusel: HTMLUListElement) {
+    carrusel.children[this.currentScrolledItem].scrollIntoView({ behavior: "smooth", block: "center", inline: "start" });
   }
 }

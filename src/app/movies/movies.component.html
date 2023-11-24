@@ -1,5 +1,11 @@
 <div class="movies-container">
-  <app-featured-carrusel [list]="featuredMovies" [carruselTitle]="'Featured movies'"></app-featured-carrusel>
-  <app-carrusel [list]="latestMovies" [carruselTitle]="'Upcoming movies'"></app-carrusel>
-  <app-carrusel [list]="topRatedMovies" [carruselTitle]="'Top rated movies'"></app-carrusel>
+  <app-featured-movies-carrusel [list]="popularMovies" [carruselTitle]="'Featured'"></app-featured-movies-carrusel>
+  <app-carrusel [list]="nowPlayingMovies" [carruselTitle]="'Now in theatres'"></app-carrusel>
+  <app-carrusel [list]="actionAdventureMovies" [carruselTitle]="'Action and adventure'"></app-carrusel>
+  <app-featured-movies-carrusel [list]="latestMovies" [carruselTitle]="'Upcoming'"></app-featured-movies-carrusel>
+  <app-carrusel [list]="crimeDocumentaryMovies" [carruselTitle]="'Crime documentaries'"></app-carrusel>
+  <app-carrusel [list]="romanticComedyMovies" [carruselTitle]="'Romantic comedies'"></app-carrusel>
+  <app-featured-movies-carrusel [list]="topRatedMovies" [carruselTitle]="'Top rated'"></app-featured-movies-carrusel>
+  <app-carrusel [list]="thrillerMovies" [carruselTitle]="'Mystery and thriller movies'"></app-carrusel>
+  <app-carrusel [list]="fantasyMovies" [carruselTitle]="'Fantasy movies'"></app-carrusel>
 </div>

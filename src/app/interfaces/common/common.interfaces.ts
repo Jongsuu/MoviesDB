@@ -25,10 +25,9 @@ export interface ProductionCountry {
   name: string;
 }
 
-export interface FeaturedItem {
-  id: string;
-  title: string;
-  overview: string;
-  poster_path: string;
-  vote_count: number;
+export interface CatalogResponse<T> {
+  results: T[];
+  page: number;
+  total_pages: number;
+  total_results: number;
 }
