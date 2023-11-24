@@ -1,4 +1,4 @@
-<li class="featured-item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle" *ngIf="item">
+<li class="featured-item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle" *ngIf="item" [class.can-hover]="canHover">
   <a>
     <div class="featured-item-card">
       <h2>{{ item.title }}</h2>

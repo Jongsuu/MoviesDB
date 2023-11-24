@@ -17,7 +17,7 @@
   scroll-snap-align: center;
 }
 
-.featured-item:hover {
+.featured-item.can-hover:hover {
   width: 500px;
 }
 
@@ -51,7 +51,7 @@
   margin-bottom: 0;
 }
 
-.featured-item:hover .featured-item-card {
+.featured-item.can-hover:hover .featured-item-card {
   transform: translateY(0);
   opacity: 1;
 }

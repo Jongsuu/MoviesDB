@@ -1,14 +1,12 @@
-<li class="carrusel-item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle" *ngIf="item">
-  <a>
-    <div class="carrusel-item-container">
-      <img src="{{getImageSrc()}}" class="carrusel-item-image" />
-      <div class="carrusel-item-card">
-        <h2>{{ item.title }}</h2>
-        <div class="carrusel-item-card-a">
-          <h4>{{ item.release_date | date:'yyyy' }}</h4>
-        </div>
-        <p>{{ item.overview }}</p>
+<li class="carrusel-item" *ngIf="item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()">
+  <img src="{{getImageSrc()}}" class="carrusel-item-image" />
+  <a class="carrusel-item-container" [class.show]="hovered" [class.hide]="hide">
+    <div class="carrusel-item-card">
+      <h3 class="carrusel-item-title">{{ item.title }}</h3>
+      <div class="carrusel-item-card-a">
+        <h4>{{ item.release_date | date:'yyyy' }}</h4>
       </div>
+      <p>{{ item.overview }}</p>
     </div>
   </a>
 </li>

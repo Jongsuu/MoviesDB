@@ -11,6 +11,7 @@ export class FeaturedItemComponent implements OnInit {
   private baseImageUrl: string;
 
   @Input() item: Movie | undefined;
+  @Input() canHover: boolean | undefined;
   activeBackgroundStyle: string | undefined;
 
   constructor() {
@@ -23,13 +24,14 @@ export class FeaturedItemComponent implements OnInit {
 
   getImageSrc(mouseOver: boolean): string {
     if (mouseOver)
-      return this.baseImageUrl + this.item?.backdrop_path;
+      return this.baseImageUrl + (this.item?.backdrop_path ?? this.item?.poster_path);
     else
       return this.baseImageUrl + this.item?.poster_path;
   }
 
   onMouseOver() {
-    this.activeBackgroundStyle = `url(${this.getImageSrc(true)})`;
+    if (this.canHover)
+      this.activeBackgroundStyle = `url(${this.getImageSrc(true)})`;
   }
 
   onMouseLeave() {

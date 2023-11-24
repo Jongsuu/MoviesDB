@@ -12,8 +12,8 @@ export class CarruselItemComponent {
 
   @Input() item: Movie | undefined;
   activeBackgroundStyle: string | undefined;
-
-  hovered: boolean = false;
+  hovered = false;
+  hide = false;
 
   constructor() {
     this.baseImageUrl = environment.baseImgUrl;
@@ -28,10 +28,16 @@ export class CarruselItemComponent {
   }
 
   onMouseOver() {
+    this.hovered = true;
     this.activeBackgroundStyle = "";
   }
 
   onMouseLeave() {
+    this.hide = true;
     this.activeBackgroundStyle = `url(${this.getImageSrc()})`;
+    setTimeout(() => {
+      this.hide = false;
+      this.hovered = false;
+    }, 200);
   }
 }

@@ -1,6 +1,14 @@
-<div class="carrusel-container">
+<div>
   <h2 class="carrusel-title">{{ carruselTitle }}</h2>
-  <ul class="carrusel" *ngIf="list">
-    <app-carrusel-item *ngFor="let item of list" [item]="item"></app-carrusel-item>
-  </ul>
+  <div class="carrusel-container" *ngIf="list">
+    <ul class="carrusel" #carrusel>
+      <app-carrusel-item *ngFor="let item of list" [item]="item"></app-carrusel-item>
+    </ul>
+    <a class="carrusel-arrow carrusel-arrow-left" [class.ocu]="hideLeftArrow" (click)="onClickLeftArrow(carrusel)">
+      <i class="ti ti-angle-left"></i>
+    </a>
+    <a class="carrusel-arrow carrusel-arrow-right" [class.ocu]="hideRightArrow" (click)="onClickRightArrow(carrusel)">
+      <i class="ti ti-angle-right"></i>
+    </a>
+  </div>
 </div>

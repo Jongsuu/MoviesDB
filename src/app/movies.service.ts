@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environment/environment';
 import { MovieCatalogResponse } from './interfaces/movies/movies.interfaces';
 import { MovieDetail } from './interfaces/movies/movieDetail.interfaces';
+import { GenresListResponse } from './interfaces/common/common.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,14 @@ export class MoviesService {
     return "Bearer " + this.apiKey;
   }
 
+  getGenresList() {
+    return this.http.get<GenresListResponse>(this.baseUrl + `/genre/movie/list`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
   getPopularMoviesCatalog() {
     return this.http.get<MovieCatalogResponse>(this.baseUrl + `/discover/movie`, {
       headers: {
@@ -34,6 +43,26 @@ export class MoviesService {
   }
 
   getLatestMoviesCatalog() {
+    return this.http.get<MovieCatalogResponse>(this.baseUrl + `/movie/upcoming`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      },
+      params: {
+        language: "en-US",
+        page: 1
+      }
+    });
+  }
+
+  getTopRatedMoviesCatalog() {
+    return this.http.get<MovieCatalogResponse>(this.baseUrl + `/movie/top_rated`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getMoviesByGenre(genre: string) {
     return this.http.get<MovieCatalogResponse>(this.baseUrl + `/movie/upcoming`, {
       headers: {
         Authorization: this.getAuthorization()
