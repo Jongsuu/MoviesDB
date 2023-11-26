@@ -1,17 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../interfaces/movies/movies.interfaces';
 import { environment } from 'environment/environment';
+import { Genre } from '../interfaces/common/common.interfaces';
 
 @Component({
-  selector: 'app-featured-item',
-  templateUrl: './featured-item.component.html',
-  styleUrls: ['./featured-item.component.css']
+  selector: 'app-featured-movies-item',
+  templateUrl: './featured-movies-item.component.html',
+  styleUrls: ['./featured-movies-item.component.css']
 })
-export class FeaturedItemComponent implements OnInit {
+export class FeaturedMoviesItemComponent implements OnInit {
   private baseImageUrl: string;
 
   @Input() item: Movie | undefined;
   @Input() canHover: boolean | undefined;
+  @Input() genreList: Genre[] | undefined;
   activeBackgroundStyle: string | undefined;
 
   constructor() {
@@ -27,6 +29,10 @@ export class FeaturedItemComponent implements OnInit {
       return this.baseImageUrl + (this.item?.backdrop_path ?? this.item?.poster_path);
     else
       return this.baseImageUrl + this.item?.poster_path;
+  }
+
+  getGenreName(genreId: number): string | undefined {
+    return this.genreList?.find(genre => genre.id === genreId)?.name;
   }
 
   onMouseOver() {

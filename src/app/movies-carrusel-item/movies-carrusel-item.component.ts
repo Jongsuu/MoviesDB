@@ -3,11 +3,11 @@ import { Movie } from '../interfaces/movies/movies.interfaces';
 import { environment } from 'environment/environment';
 
 @Component({
-  selector: 'app-carrusel-item',
-  templateUrl: './carrusel-item.component.html',
-  styleUrls: ['./carrusel-item.component.css']
+  selector: 'app-movies-carrusel-item',
+  templateUrl: './movies-carrusel-item.component.html',
+  styleUrls: ['./movies-carrusel-item.component.css']
 })
-export class CarruselItemComponent {
+export class MoviesCarruselItemComponent {
   private baseImageUrl: string;
 
   @Input() item: Movie | undefined;
@@ -22,6 +22,6 @@ export class CarruselItemComponent {
   }
 
   private getImageSrc(): string {
-    return this.baseImageUrl + this.item?.backdrop_path;
+    return this.baseImageUrl + (this.item?.backdrop_path ?? this.item?.poster_path);
   }
 }

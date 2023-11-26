@@ -1,13 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Serie } from '../interfaces/series/series.interface';
+import { Genre } from '../interfaces/common/common.interfaces';
 
 @Component({
   selector: 'app-featured-series-carrusel',
   templateUrl: './featured-series-carrusel.component.html',
   styleUrls: ['./featured-series-carrusel.component.css']
 })
-export class FeaturedSeriesCarruselComponent {
-  @Input() list: Serie[] = [];
+export class FeaturedSeriesCarruselComponent implements OnInit {
+  @Input() list: Serie[] | undefined;
+  @Input() genreList: Genre[] | undefined;
   @Input() carruselTitle: string | undefined;
   @Input() seeMoreLink: string | undefined;
   hideLeftArrow = true;
@@ -16,6 +18,11 @@ export class FeaturedSeriesCarruselComponent {
 
   private arrowsState: { hideLeftArrow: boolean, hideRightArrow: boolean } = { hideLeftArrow: true, hideRightArrow: false };
   private currentScrolledItem = 0;
+
+  ngOnInit(): void {
+    if (!this.list || this.list.length === 0)
+      this.list = undefined;
+  }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {
     if (!this.hideLeftArrow) {
@@ -42,14 +49,14 @@ export class FeaturedSeriesCarruselComponent {
       this.canHoverItem = false;
       let newIndex = this.currentScrolledItem + 5;
 
-      if (newIndex >= this.list.length - 5)
-        newIndex = this.list.length - 5;
+      if (newIndex >= this.list!.length - 5)
+        newIndex = this.list!.length - 5;
 
       this.currentScrolledItem = newIndex;
       this.scrollCarrusel(carrusel);
 
       setTimeout(() => {
-        this.hideRightArrow = newIndex === this.list.length - 5;
+        this.hideRightArrow = newIndex === this.list!.length - 5;
         this.hideLeftArrow = false;
         this.arrowsState.hideRightArrow = this.hideRightArrow;
         this.arrowsState.hideLeftArrow = this.hideLeftArrow;

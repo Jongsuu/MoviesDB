@@ -22,11 +22,10 @@
 }
 
 .featured-series-item-card {
-  width: 100%;
   border-radius: 0 0 1rem 1rem;
   color: #fff;
   padding: 10px;
-  background-color: rgba(220, 17, 75, 0.7);
+  background-color: rgba(220, 17, 75, 0.9);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -37,11 +36,6 @@
 
 .featured-series-item-card h2 {
   margin: 0;
-}
-
-.featured-series-item-card h4 {
-  margin: 0;
-  font-weight: 600;
 }
 
 .featured-series-item-card p {
@@ -57,11 +51,44 @@
   opacity: 1;
 }
 
-.featured-series-item-card-a {
+.featured-series-item-card-info {
   display: flex;
   align-items: center;
   justify-content: start;
-  gap: 0 0.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0.25rem 0.5rem;
+}
+
+.featured-series-item-card-info h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.card-info-votes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 0.3rem;
+  border-radius: 0.25rem;
+  background-color: #ff511f;
+  padding: 0.25rem;
+}
+
+.card-info-votes span {
+  font-weight: 700;
+}
+
+.card-info-votes i {
+  color: #fbe4f3;
+  font-weight: 900;
+}
+
+.card-info-genre {
+  border-radius: 0.25rem;
+  background-color: #81deb8;
+  padding: 0.25rem;
+  font-weight: 700;
 }
 
 .featured-series-item-card-b {

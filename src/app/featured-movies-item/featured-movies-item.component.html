@@ -1,9 +1,9 @@
-<li class="featured-series-item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle" *ngIf="item" [class.can-hover]="canHover">
+<li class="featured-item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle" *ngIf="item" [class.can-hover]="canHover">
   <a>
-    <div class="featured-series-item-card">
-      <h2>{{ item.name }}</h2>
-      <div class="featured-series-item-card-info">
-        <h3>{{ item.first_air_date | date:'yyyy' }}</h3>
+    <div class="featured-item-card">
+      <h2>{{ item.title }}</h2>
+      <div class="featured-item-card-info">
+        <h3>{{ item.release_date | date:'yyyy' }}</h3>
         <div class="card-info-votes" *ngIf="item.vote_average > 0">
           <i class="ti ti-heart"></i>
           <span>{{ item.vote_average | number:'1.1-1' }}</span>

@@ -1,0 +1,15 @@
+<li class="series-carrusel-item" *ngIf="item" [style.background-image]="activeBackgroundStyle">
+  <a class="series-carrusel-item-container">
+    <div class="series-carrusel-item-card">
+      <h3 class="series-carrusel-item-title">{{ item.name }}</h3>
+      <div class="series-carrusel-item-card-info">
+        <h4>{{ item.first_air_date | date:'yyyy' }}</h4>
+        <div class="card-info-votes" *ngIf="item.vote_average > 0">
+          <i class="ti ti-heart"></i>
+          <span>{{ item.vote_average | number:'1.1-1' }}</span>
+        </div>
+      </div>
+      <p>{{ item.overview }}</p>
+    </div>
+  </a>
+</li>

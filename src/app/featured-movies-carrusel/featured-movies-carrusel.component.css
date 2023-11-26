@@ -9,6 +9,7 @@
 .featured-movies-carrusel-title {
   margin: 0;
   color: var(--primary-color);
+  cursor: default;
 }
 
 .featured-movies-carrusel-seemore {

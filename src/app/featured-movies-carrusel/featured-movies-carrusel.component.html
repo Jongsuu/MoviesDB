@@ -1,4 +1,4 @@
-<div (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
+<div *ngIf="list">
   <div>
     <div class="featured-movies-carrusel-header">
       <h2 class="featured-movies-carrusel-title">{{ carruselTitle }}</h2>
@@ -8,9 +8,9 @@
       </a>
     </div>
   </div>
-  <div class="featured-movies-carrusel-container" *ngIf="list">
+  <div class="featured-movies-carrusel-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
     <ul class="featured-movies-carrusel" #carrusel>
-      <app-featured-item *ngFor="let item of list" [item]="item" [canHover]="canHoverItem"></app-featured-item>
+      <app-featured-movies-item *ngFor="let item of list" [item]="item" [canHover]="canHoverItem" [genreList]="genreList"></app-featured-movies-item>
     </ul>
     <a class="featured-movies-carrusel-arrow featured-movies-carrusel-arrow-left" [class.hide]="hideLeftArrow" (click)="onClickLeftArrow(carrusel)">
       <i class="ti ti-angle-left"></i>

@@ -8,31 +8,31 @@ import { MoviesComponent } from './movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FeaturedMoviesCarruselComponent } from './featured-movies-carrusel/featured-movies-carrusel.component';
-import { FeaturedItemComponent } from './featured-item/featured-item.component';
-import { CarruselComponent } from './carrusel/carrusel.component';
-import { CarruselItemComponent } from './carrusel-item/carrusel-item.component';
+import { MoviesCarruselComponent } from './movies-carrusel/movies-carrusel.component';
+import { MoviesCarruselItemComponent } from './movies-carrusel-item/movies-carrusel-item.component';
 import { SeriesComponent } from './series/series.component';
 import { FeaturedSeriesCarruselComponent } from './featured-series-carrusel/featured-series-carrusel.component';
 import { FeaturedSeriesItemComponent } from './featured-series-item/featured-series-item.component';
 import { HomeComponent } from './home/home.component';
-import { CarruselMoviesComponent } from './carrusel-movies/carrusel-movies.component';
-import { CarruselMoviesItemComponent } from './carrusel-movies-item/carrusel-movies-item.component';
+import { FeaturedMoviesItemComponent } from './featured-movies-item/featured-movies-item.component';
+import { SeriesCarruselItemComponent } from './series-carrusel-item/series-carrusel-item.component';
+import { SeriesCarruselComponent } from './series-carrusel/series-carrusel.component';
 
 @NgModule({
   declarations: [
+    AppComponent,
+    HomeComponent,
     NavbarComponent,
     MoviesComponent,
     FeaturedMoviesCarruselComponent,
-    FeaturedItemComponent,
-    CarruselComponent,
-    CarruselItemComponent,
-    AppComponent,
+    FeaturedMoviesItemComponent,
+    MoviesCarruselComponent,
+    MoviesCarruselItemComponent,
     SeriesComponent,
     FeaturedSeriesCarruselComponent,
     FeaturedSeriesItemComponent,
-    HomeComponent,
-    CarruselMoviesComponent,
-    CarruselMoviesItemComponent
+    SeriesCarruselComponent,
+    SeriesCarruselItemComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,7 @@ import { CarruselMoviesItemComponent } from './carrusel-movies-item/carrusel-mov
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'movies', component: MoviesComponent },
-      { path: 'tv-series', component: SeriesComponent }
+      { path: 'series', component: SeriesComponent }
     ])
   ],
   providers: [],

@@ -1,19 +1,26 @@
-import { Component, Input } from '@angular/core';
-import { Movie } from '../interfaces/movies/movies.interfaces';
+import { Component, Input, OnInit } from '@angular/core';
+import { Serie } from '../interfaces/series/series.interface';
 
 @Component({
-  selector: 'app-carrusel',
-  templateUrl: './carrusel.component.html',
-  styleUrls: ['./carrusel.component.css']
+  selector: 'app-series-carrusel',
+  templateUrl: './series-carrusel.component.html',
+  styleUrls: ['./series-carrusel.component.css']
 })
-export class CarruselComponent {
-  @Input() list: Movie[] = [];
+export class SeriesCarruselComponent implements OnInit {
+  @Input() list: Serie[] | undefined;
   @Input() carruselTitle: string | undefined;
   hideLeftArrow = true;
   hideRightArrow = true;
 
   private arrowsState: { hideLeftArrow: boolean, hideRightArrow: boolean } = { hideLeftArrow: true, hideRightArrow: false };
   private currentScrolledItem = 0;
+
+  ngOnInit(): void {
+    if (!this.list || this.list.length === 0)
+      this.list = undefined;
+    else
+      this.list = this.list.filter(series => series.poster_path && series.backdrop_path && series.overview && series.overview.length > 0);
+  }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {
     let newIndex = this.currentScrolledItem - 5;
@@ -35,14 +42,14 @@ export class CarruselComponent {
   onClickRightArrow(carrusel: HTMLUListElement) {
     let newIndex = this.currentScrolledItem + 5;
 
-    if (newIndex >= this.list.length - 5)
-      newIndex = this.list.length - 5;
+    if (newIndex >= this.list!.length - 5)
+      newIndex = this.list!.length - 5;
 
     this.currentScrolledItem = newIndex;
     this.scrollCarrusel(carrusel);
 
     setTimeout(() => {
-      this.hideRightArrow = newIndex === this.list.length - 5;
+      this.hideRightArrow = newIndex === this.list!.length - 5;
       this.hideLeftArrow = false;
       this.arrowsState.hideRightArrow = this.hideRightArrow;
       this.arrowsState.hideLeftArrow = this.hideLeftArrow;

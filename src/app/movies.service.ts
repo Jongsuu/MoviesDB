@@ -72,6 +72,22 @@ export class MoviesService {
     });
   }
 
+  getRecommendationsMoviesCatalog(id: number) {
+    return this.http.get<CatalogResponse<Movie>>(this.baseUrl + `/movie/${id}/recommendations`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getSimilarMoviesCatalog(id: number) {
+    return this.http.get<CatalogResponse<Movie>>(this.baseUrl + `/movie/${id}/similar`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
   getMovieById(id: number) {
     return this.http.get<MovieDetail>(this.baseUrl + `/movie/${id}`, {
       headers: {

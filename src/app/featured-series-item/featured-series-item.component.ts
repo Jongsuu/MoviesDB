@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { environment } from 'environment/environment';
 import { Serie } from '../interfaces/series/series.interface';
+import { Genre } from '../interfaces/common/common.interfaces';
 
 @Component({
   selector: 'app-featured-series-item',
@@ -11,6 +12,7 @@ export class FeaturedSeriesItemComponent {
   private baseImageUrl: string;
 
   @Input() item: Serie | undefined;
+  @Input() genreList: Genre[] | undefined;
   @Input() canHover: boolean | undefined;
   activeBackgroundStyle: string | undefined;
 
@@ -27,6 +29,10 @@ export class FeaturedSeriesItemComponent {
       return this.baseImageUrl + (this.item?.backdrop_path ?? this.item?.poster_path);
     else
       return this.baseImageUrl + this.item?.poster_path;
+  }
+
+  getGenreName(genreId: number): string | undefined {
+    return this.genreList?.find(genre => genre.id === genreId)?.name;
   }
 
   onMouseOver() {
