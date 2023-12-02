@@ -90,3 +90,19 @@ nav {
 .nav-item:hover span {
   transform: translate3d(0, -2px, 0);
 }
+
+@media(max-width: 1366px) {
+  nav {
+    padding: 0 5rem;
+  }
+}
+
+@media(max-width: 850px) {
+  nav {
+    padding: 0 1rem;
+  }
+
+  .nav-list {
+    gap: 0 3rem;
+  }
+}

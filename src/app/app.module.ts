@@ -17,6 +17,11 @@ import { HomeComponent } from './home/home.component';
 import { FeaturedMoviesItemComponent } from './featured-movies-item/featured-movies-item.component';
 import { SeriesCarruselItemComponent } from './series-carrusel-item/series-carrusel-item.component';
 import { SeriesCarruselComponent } from './series-carrusel/series-carrusel.component';
+import { FeaturedMovieComponent } from './featured-movie/featured-movie.component';
+import { FeaturedSeriesComponent } from './featured-series/featured-series.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { SeriesDetailComponent } from './series-detail/series-detail.component';
+import { WatchProvidersComponent } from './watch-providers/watch-providers.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,12 @@ import { SeriesCarruselComponent } from './series-carrusel/series-carrusel.compo
     FeaturedSeriesCarruselComponent,
     FeaturedSeriesItemComponent,
     SeriesCarruselComponent,
-    SeriesCarruselItemComponent
+    SeriesCarruselItemComponent,
+    FeaturedMovieComponent,
+    FeaturedSeriesComponent,
+    MovieDetailComponent,
+    SeriesDetailComponent,
+    WatchProvidersComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +51,9 @@ import { SeriesCarruselComponent } from './series-carrusel/series-carrusel.compo
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'movies', component: MoviesComponent },
-      { path: 'series', component: SeriesComponent }
+      { path: 'movies/:movieId', component: MovieDetailComponent },
+      { path: 'series', component: SeriesComponent },
+      { path: 'series/:seriesId', component: SeriesDetailComponent }
     ])
   ],
   providers: [],

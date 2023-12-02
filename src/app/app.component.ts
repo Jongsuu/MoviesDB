@@ -6,10 +6,17 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angular Movies';
-  scrolled: boolean = false;
+  scrolled = false;
+  showScrollUpArrow = false;
 
-  @HostListener("window:scroll", ["$event"]) onScroll(): void {
+  @HostListener("window:scroll", ["$event"])
+  onScroll(): void {
     this.scrolled = window.scrollY > 20;
+    this.showScrollUpArrow = window.scrollY > 200;
+  }
+
+  onClickScrollUpArrow() {
+    if (this.showScrollUpArrow)
+      window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }

@@ -1,2 +1,9 @@
-<app-navbar [scrolled]="scrolled"></app-navbar>
-<router-outlet></router-outlet>
+<div class="app-container">
+  <app-navbar [scrolled]="scrolled"></app-navbar>
+  <router-outlet></router-outlet>
+  <div>
+    <a class="scroll-arrow" [class.show]="showScrollUpArrow" (click)="onClickScrollUpArrow()">
+      <i class="ti ti-arrow-up"></i>
+    </a>
+  </div>
+</div>

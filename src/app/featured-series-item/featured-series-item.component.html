@@ -1,5 +1,6 @@
-<li class="featured-series-item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle" *ngIf="item" [class.can-hover]="canHover">
-  <a>
+<li *ngIf="item" class="featured-series-item" [class.can-hover]="canHover">
+  <a class="featured-series-item-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle"
+    [routerLink]="['/series', item.id]">
     <div class="featured-series-item-card">
       <h2>{{ item.name }}</h2>
       <div class="featured-series-item-card-info">

@@ -18,8 +18,8 @@ export class SeriesCarruselComponent implements OnInit {
   ngOnInit(): void {
     if (!this.list || this.list.length === 0)
       this.list = undefined;
-    else
-      this.list = this.list.filter(series => series.poster_path && series.backdrop_path && series.overview && series.overview.length > 0);
+    else if (this.list)
+      this.arrowsState.hideRightArrow = this.list.length <= 5;
   }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {

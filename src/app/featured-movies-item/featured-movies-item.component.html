@@ -1,5 +1,6 @@
-<li class="featured-item" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle" *ngIf="item" [class.can-hover]="canHover">
-  <a>
+<li *ngIf="item" class="featured-item" [class.can-hover]="canHover">
+  <a class="featured-item-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle"
+    [routerLink]="['/movies', item.id]">
     <div class="featured-item-card">
       <h2>{{ item.title }}</h2>
       <div class="featured-item-card-info">

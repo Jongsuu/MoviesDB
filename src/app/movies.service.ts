@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environment/environment';
 import { MovieDetail } from './interfaces/movies/movieDetail.interfaces';
-import { CatalogResponse, GenresListResponse } from './interfaces/common/common.interfaces';
+import { CatalogResponse, GenresListResponse, WatchProviders } from './interfaces/common/common.interfaces';
 import { Movie } from './interfaces/movies/movies.interfaces';
 
 @Injectable({
@@ -95,6 +95,14 @@ export class MoviesService {
       },
       params: {
         append_to_response: "videos"
+      }
+    });
+  }
+
+  getMovieWatchProviders(id: number) {
+    return this.http.get<WatchProviders>(this.baseUrl + `/movie/${id}/watch/providers`, {
+      headers: {
+        Authorization: this.getAuthorization()
       }
     });
   }

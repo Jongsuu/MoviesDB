@@ -1,13 +1,18 @@
 <div class="movies-container">
   <app-featured-movies-carrusel [list]="popularMovies" [carruselTitle]="'Featured movies'" [genreList]="genresList"></app-featured-movies-carrusel>
-  <app-movies-carrusel [list]="actionAdventureMovies" [carruselTitle]="'Action and adventure'"></app-movies-carrusel>
   <app-movies-carrusel [list]="nowPlayingMovies" [carruselTitle]="'Now in theatres'"></app-movies-carrusel>
-  <app-movies-carrusel [list]="similarSeries" [carruselTitle]="similarMoviesTitle"></app-movies-carrusel>
+  <app-movies-carrusel [list]="actionAdventureMovies" [carruselTitle]="'Action and adventure'"></app-movies-carrusel>
+  <app-movies-carrusel [list]="similarMovies" [carruselTitle]="similarMoviesTitle"></app-movies-carrusel>
+  <app-featured-movie [item]="latestMovie"></app-featured-movie>
   <app-featured-movies-carrusel [list]="upcomingMovies" [carruselTitle]="'Upcoming movies'" [genreList]="genresList"></app-featured-movies-carrusel>
   <app-movies-carrusel [list]="crimeDocumentaryMovies" [carruselTitle]="'Crime documentaries'"></app-movies-carrusel>
   <app-movies-carrusel [list]="romanticComedyMovies" [carruselTitle]="'Romantic comedies'"></app-movies-carrusel>
   <app-featured-movies-carrusel [list]="topRatedMovies" [carruselTitle]="'Top rated movies'" [genreList]="genresList"></app-featured-movies-carrusel>
-  <app-movies-carrusel [list]="thrillerMovies" [carruselTitle]="'Mystery and thriller movies'"></app-movies-carrusel>
-  <app-movies-carrusel [list]="recommendationsMovies" [carruselTitle]="recommendationsMoviesTitle"></app-movies-carrusel>
+  <app-featured-movie [item]="horrorMovie"></app-featured-movie>
+  <app-movies-carrusel [list]="horrorMovies" [carruselTitle]="'Horror movies'"></app-movies-carrusel>
+  <app-movies-carrusel [list]="historicalMovies" [carruselTitle]="'Historical movies'"></app-movies-carrusel>
+  <app-featured-movies-carrusel [list]="recommendationsMovies" [carruselTitle]="recommendationsMoviesTitle" [genreList]="genresList"></app-featured-movies-carrusel>
+  <app-movies-carrusel [list]="militaryMovies" [carruselTitle]="'Military and war movies'"></app-movies-carrusel>
   <app-movies-carrusel [list]="fantasyMovies" [carruselTitle]="'Fantasy movies'"></app-movies-carrusel>
+  <app-movies-carrusel [list]="comedyMovies" [carruselTitle]="'Comedy movies'"></app-movies-carrusel>
 </div>

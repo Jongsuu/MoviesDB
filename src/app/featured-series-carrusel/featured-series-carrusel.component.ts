@@ -22,6 +22,8 @@ export class FeaturedSeriesCarruselComponent implements OnInit {
   ngOnInit(): void {
     if (!this.list || this.list.length === 0)
       this.list = undefined;
+    else if (this.list)
+      this.arrowsState.hideRightArrow = this.list.length <= 5;
   }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {

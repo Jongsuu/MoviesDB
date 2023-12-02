@@ -1,0 +1,28 @@
+<div *ngIf="item">
+  <div class="featured-movie-container" [style.background-image]="getImageSrc()">
+    <div class="featured-movie">
+      <div class="featured-movie-info">
+        <h1>{{ item.title }}</h1>
+        <div class="featured-movie-card">
+          <div class="featured-movie-card-info">
+            <h2>{{ item.release_date | date:'mediumDate' }}</h2>
+            <h2 class="featured-movie-length">{{ getMovieLength(item.runtime) }}</h2>
+          </div>
+          <div class="card-info">
+            <div class="card-info-votes" *ngIf="item.vote_average > 0">
+              <i class="ti ti-heart"></i>
+              <span>{{ item.vote_average | number:'1.1-1' }}</span>
+            </div>
+            <div class="card-info-genre" *ngFor="let genre of item.genres">
+              <span>{{ genre.name }}</span>
+            </div>
+          </div>
+        </div>
+        <p class="featured-movie-description">{{ item.overview }}</p>
+        <a class="featured-movie-detail-link" [routerLink]="['/movies', item.id]">
+          <i class="ti ti-info-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -31,3 +31,21 @@ export interface CatalogResponse<T> {
   total_pages: number;
   total_results: number;
 }
+
+export interface WatchProviders {
+  id: number;
+  results: { GB: WatchProvidersResults; IE: WatchProvidersResults; }
+}
+
+export interface WatchProvidersResults {
+  link: string;
+  rent: WatchProvidersResultsItem[];
+  buy: WatchProvidersResultsItem[];
+}
+
+export interface WatchProvidersResultsItem {
+  logo_path: string;
+  provider_id: number;
+  provider_name: string;
+  display_priority: number;
+}

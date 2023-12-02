@@ -1,0 +1,44 @@
+<div *ngIf="item">
+  <div class="movie-detail-container">
+    <div class="movie-detail" [style.background-image]="getImageSrc(false)">
+      <div class="movie-detail-content">
+        <img class="movie-detail-poster" src="{{ getImageSrc(true) }}"/>
+        <div class="movie-detail-info">
+          <h1>{{ item.title }}</h1>
+          <div class="movie-detail-card">
+            <div class="movie-detail-card-info">
+              <h2>{{ item.release_date | date:'shortDate' }}</h2>
+              <h2 class="movie-detail-length">{{ getMovieLength(item.runtime) }}</h2>
+            </div>
+            <div class="card-info">
+              <div class="card-info-votes" *ngIf="item.vote_average > 0">
+                <i class="ti ti-heart"></i>
+                <span>{{ item.vote_average | number:'1.1-1' }}</span>
+              </div>
+              <div class="card-info-genre" *ngFor="let genre of item.genres">
+                <span>{{ genre.name }}</span>
+              </div>
+            </div>
+          </div>
+          <p class="movie-detail-tagline">{{ item.tagline }}</p>
+          <p class="movie-detail-description">{{ item.overview }}</p>
+          <div class="movie-detail-actions">
+            <a class="movie-detail-play-link" href="{{ getTrailerUrl() }}" target="_blank">
+              <div class="movie-detail-play-link-icon">
+                <i class="ti ti-control-play"></i>
+              </div>
+              <span>Play</span>
+            </a>
+            <a class="movie-detail-link" href="{{ item.homepage }}" target="_blank" *ngIf="item.homepage">
+              <i class="ti ti-info-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="movie-detail-more-info">
+    <app-watch-providers [watchProvidersTitle]="'Rent at'" [watchProviders]="watchProviders.results.GB.rent" [link]="watchProviders.results.GB.link"></app-watch-providers>
+    <app-watch-providers [watchProvidersTitle]="'Buy at'" [watchProviders]="watchProviders.results.GB.buy" [link]="watchProviders.results.GB.link"></app-watch-providers>
+  </div>
+</div>

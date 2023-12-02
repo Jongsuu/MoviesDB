@@ -1,0 +1,23 @@
+<div *ngIf="watchProviders">
+  <div class="watch-providers-header">
+    <a class="watch-providers-title" href="{{ link }}">
+      <span>{{ watchProvidersTitle }}</span>
+      <i class="ti ti-angle-right"></i>
+    </a>
+  </div>
+  <div class="watch-providers-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
+    <ul class="watch-providers" #carrusel>
+      <li *ngFor="let item of watchProviders" [style.background-image]="getImageSrc(item.logo_path)" class="watch-providers-item">
+        <div class="watch-providers-item-card">
+          <h4>{{ item.provider_name }}</h4>
+        </div>
+      </li>
+    </ul>
+    <a class="watch-providers-arrow watch-providers-arrow-left" [class.hide]="hideLeftArrow" (click)="onClickLeftArrow(carrusel)">
+      <i class="ti ti-angle-left"></i>
+    </a>
+    <a class="watch-providers-arrow watch-providers-arrow-right" [class.hide]="hideRightArrow" (click)="onClickRightArrow(carrusel)">
+      <i class="ti ti-angle-right"></i>
+    </a>
+  </div>
+</div>
