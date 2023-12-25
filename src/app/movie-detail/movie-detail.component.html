@@ -1,11 +1,11 @@
-<div *ngIf="item">
+<section *ngIf="item">
   <div class="movie-detail-container">
-    <div class="movie-detail" [style.background-image]="getImageSrc(false)">
+    <article class="movie-detail" [style.background-image]="getImageSrc(false)">
       <div class="movie-detail-content">
         <img class="movie-detail-poster" src="{{ getImageSrc(true) }}"/>
         <div class="movie-detail-info">
           <h1>{{ item.title }}</h1>
-          <div class="movie-detail-card">
+          <header class="movie-detail-card">
             <div class="movie-detail-card-info">
               <h2>{{ item.release_date | date:'shortDate' }}</h2>
               <h2 class="movie-detail-length">{{ getMovieLength(item.runtime) }}</h2>
@@ -19,11 +19,11 @@
                 <span>{{ genre.name }}</span>
               </div>
             </div>
-          </div>
+          </header>
           <p class="movie-detail-tagline">{{ item.tagline }}</p>
           <p class="movie-detail-description">{{ item.overview }}</p>
-          <div class="movie-detail-actions">
-            <a class="movie-detail-play-link" href="{{ getTrailerUrl() }}" target="_blank">
+          <footer class="movie-detail-actions">
+            <a class="movie-detail-play-link" href="{{ trailerUrl }}" target="_blank" *ngIf="getTrailerUrl()">
               <div class="movie-detail-play-link-icon">
                 <i class="ti ti-control-play"></i>
               </div>
@@ -32,13 +32,15 @@
             <a class="movie-detail-link" href="{{ item.homepage }}" target="_blank" *ngIf="item.homepage">
               <i class="ti ti-info-alt"></i>
             </a>
-          </div>
+          </footer>
         </div>
       </div>
-    </div>
+    </article>
   </div>
-  <div class="movie-detail-more-info">
-    <app-watch-providers [watchProvidersTitle]="'Rent at'" [watchProviders]="watchProviders.results.GB.rent" [link]="watchProviders.results.GB.link"></app-watch-providers>
-    <app-watch-providers [watchProvidersTitle]="'Buy at'" [watchProviders]="watchProviders.results.GB.buy" [link]="watchProviders.results.GB.link"></app-watch-providers>
-  </div>
-</div>
+  <footer class="movie-detail-more-info" *ngIf="movieCast || movieCrew || rentWatchProviders || buyWatchProviders">
+    <app-credits [credits]="movieCast" [creditsTitle]="'Cast of ' + item.title"></app-credits>
+    <app-credits [credits]="movieCrew" [creditsTitle]="'Crew of ' + item.title"></app-credits>
+    <app-watch-providers [watchProvidersTitle]="'Available to rent in'" [watchProviders]="rentWatchProviders" [link]="watchProvidersLink"></app-watch-providers>
+    <app-watch-providers [watchProvidersTitle]="'Available to buy in'" [watchProviders]="buyWatchProviders" [link]="watchProvidersLink"></app-watch-providers>
+  </footer>
+</section>

@@ -1,0 +1,24 @@
+<div *ngIf="seasons" class="series-seasons-container">
+  <div class="series-seasons-header">
+    <div class="series-seasons-select-container">
+      <select class="series-seasons-select" (change)="onSeasonsSelectChange(select)" #select>
+        <option value="{{ season.season_number }}" *ngFor="let season of seasons; index as i;"
+        [attr.selected]="i === 0 ? 'true' : null">Season {{ season.season_number }}</option>
+      </select>
+    </div>
+    <div class="series-seasons-header-actions">
+      <a class="series-seasons-header-menu-action" [class.series-seasons-header-actions-active]="actionState.episodes" (click)="onClickEpisodes()">
+        <span>Episodes</span>
+      </a>
+      <a class="series-seasons-header-menu-action" [class.series-seasons-header-actions-active]="actionState.related" (click)="onClickRelated()">
+        <span>Related</span>
+      </a>
+      <a class="series-seasons-header-menu-action" [class.series-seasons-header-actions-active]="actionState.details" (click)="onClickDetails()">
+        <span>Details</span>
+      </a>
+    </div>
+  </div>
+  <div class="series-seasons-content">
+    <app-series-seasons-episodes [episodes]="seasonEpisodes" [showEpisodes]="actionState.episodes"></app-series-seasons-episodes>
+  </div>
+</div>

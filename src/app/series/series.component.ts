@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SeriesService } from '../series.service';
 import { Serie } from '../interfaces/series/series.interface';
 import { Genre } from '../interfaces/common/common.interfaces';
+import { SeriesDetail } from '../interfaces/series/seriesDetail.interface';
 
 @Component({
   selector: 'app-series',
@@ -15,6 +16,9 @@ export class SeriesComponent implements OnInit {
   topRatedSeries: Serie[] = [];
   airingTodaySeries: Serie[] = [];
   onTheAirSeries: Serie[] = [];
+
+  latestSeries: SeriesDetail | undefined;
+  funniestSeries: SeriesDetail | undefined;
 
   recommendationsSeries: Serie[] = [];
   recommendationsSeriesTitle: string | undefined;
@@ -32,7 +36,14 @@ export class SeriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.seriesService.getPopularSeriesCatalog().subscribe((response) => {
-      this.popularSeries = response.results.filter(series => series.poster_path && series.backdrop_path && series.overview.length > 0);
+      let series = response.results.filter(series => series.poster_path && series.backdrop_path && series.overview.length > 0);
+      let lastSeries = series.splice(0, 1);
+
+      this.seriesService.getSeriesById(lastSeries[0].id).subscribe((response) => {
+        this.latestSeries = response;
+      });
+
+      this.popularSeries = series;
       this.loadSimilarSeries();
     });
 
@@ -55,12 +66,18 @@ export class SeriesComponent implements OnInit {
   private loadGenreSeries(): void {
     this.seriesService.getGenresList().subscribe((response) => {
       this.genresList = response.genres;
-      console.log(this.genresList);
 
       let comedy = this.genresList.find(genre => genre.name === "Comedy")?.id.toString();
       if (comedy) {
         this.seriesService.getSeriesByGenre(comedy).subscribe((response) => {
-          this.comedySeries = response.results.filter(series => series.poster_path && series.backdrop_path && series.overview.length > 0);
+          let series = response.results.filter(series => series.poster_path && series.backdrop_path && series.overview.length > 0);
+          let lastSeries = series.splice(0, 1);
+
+          this.comedySeries = series;
+
+          this.seriesService.getSeriesById(lastSeries[0].id).subscribe((response) => {
+            this.funniestSeries = response;
+          });
         });
       }
 

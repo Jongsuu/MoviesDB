@@ -1,0 +1,110 @@
+.series-season-episodes-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.series-season-episodes-list-container {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(450px, 1fr));
+  padding: 0;
+  gap: 2rem;
+}
+
+.series-season-episodes-item {
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  gap: 0 1rem;
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 0.3s ease-out;
+}
+
+.series-season-episodes-item:hover {
+  transform: scale(1.03);
+}
+
+.series-season-episodes-item-poster {
+  border-radius: 1rem;
+  min-width: 200px;
+  max-width: 300px;
+  width: 300px;
+  height: 200px;
+  min-height: 100px;
+  max-height: 200px;
+  box-shadow: 2px 7px 15px -2px #000000;
+}
+
+.series-season-episodes-item-title {
+  color: var(--primary-color);
+  margin: 0;
+  margin-bottom: 0.1rem;
+}
+
+.series-season-episodes-item-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 0 0.75rem;
+}
+
+.series-season-episodes-item-subtitle h3 {
+  margin: 0;
+}
+
+.series-season-episodes-item-description {
+  display: -webkit-box;
+  width: 50ch;
+  font-size: 1.05rem;
+  font-weight: 500;
+  overflow: hidden;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+@media(max-width: 1500px) {
+  .series-season-episodes-list-container {
+    grid-template-columns: minmax(300px, 1fr);
+  }
+
+  .series-season-episodes-item-description {
+    width: 60ch;
+  }
+}
+
+@media(max-width: 900px) {
+  .series-season-episodes-item-description {
+    font-size: 1rem;
+    width: auto;
+  }
+}
+
+@media(max-width: 700px) {
+  .series-season-episodes-item {
+    gap: 0 0.5rem;
+  }
+
+  .series-season-episodes-item-title {
+    font-size: 1.25rem;
+  }
+
+  .series-season-episodes-item-subtitle h3 {
+    font-size: 1rem;
+  }
+
+  .series-season-episodes-item-description {
+    -webkit-line-clamp: 4;
+  }
+
+  .series-season-episodes-item-poster {
+    height: auto;
+    width: auto;
+  }
+}
+
+@media(max-width: 600px) {
+  .series-season-episodes-item-title {
+    font-size: 1.1rem;
+  }
+}

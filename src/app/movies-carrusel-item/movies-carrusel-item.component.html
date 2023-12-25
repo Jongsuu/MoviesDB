@@ -1,17 +1,17 @@
 <li class="movies-carrusel-item" *ngIf="item">
   <a class="movies-carrusel-item-link" [style.background-image]="activeBackgroundStyle" [routerLink]="['/movies', item.id]">
-    <div class="movies-carrusel-item-container">
+    <article class="movies-carrusel-item-container">
       <div class="movies-carrusel-item-card">
         <h3 class="movies-carrusel-item-title">{{ item.title }}</h3>
-        <div class="movies-carrusel-item-card-info">
+        <header class="movies-carrusel-item-card-info">
           <h4>{{ item.release_date | date:'yyyy' }}</h4>
           <div class="card-info-votes" *ngIf="item.vote_average > 0">
             <i class="ti ti-heart"></i>
             <span>{{ item.vote_average | number:'1.1-1' }}</span>
           </div>
-        </div>
+        </header>
         <p>{{ item.overview }}</p>
       </div>
-    </div>
+    </article>
   </a>
 </li>

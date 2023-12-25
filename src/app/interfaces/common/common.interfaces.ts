@@ -49,3 +49,25 @@ export interface WatchProvidersResultsItem {
   provider_name: string;
   display_priority: number;
 }
+
+export interface CreditsResponse {
+  id: number;
+  cast: CreditsResponseItem[];
+  crew: CreditsResponseItem[];
+}
+
+export interface CreditsResponseItem {
+  id: number;
+  adult: boolean;
+  gender: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  character?: string;
+  credit_id: string;
+  department?: string;
+  job?: string;
+  order: number;
+}

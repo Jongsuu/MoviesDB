@@ -25,6 +25,11 @@
   width: 100%;
 }
 
+.featured-movie h1 a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .featured-movie-card-info {
   display: flex;
   align-items: baseline;

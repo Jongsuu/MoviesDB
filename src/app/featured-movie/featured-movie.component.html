@@ -1,9 +1,9 @@
-<div *ngIf="item">
-  <div class="featured-movie-container" [style.background-image]="getImageSrc()">
+<section *ngIf="item">
+  <article class="featured-movie-container" [style.background-image]="getImageSrc()">
     <div class="featured-movie">
       <div class="featured-movie-info">
-        <h1>{{ item.title }}</h1>
-        <div class="featured-movie-card">
+        <h1><a [routerLink]="['/movies', item.id]">{{ item.title }}</a></h1>
+        <header class="featured-movie-card">
           <div class="featured-movie-card-info">
             <h2>{{ item.release_date | date:'mediumDate' }}</h2>
             <h2 class="featured-movie-length">{{ getMovieLength(item.runtime) }}</h2>
@@ -17,12 +17,12 @@
               <span>{{ genre.name }}</span>
             </div>
           </div>
-        </div>
+        </header>
         <p class="featured-movie-description">{{ item.overview }}</p>
         <a class="featured-movie-detail-link" [routerLink]="['/movies', item.id]">
           <i class="ti ti-info-alt"></i>
         </a>
       </div>
     </div>
-  </div>
-</div>
+  </article>
+</section>

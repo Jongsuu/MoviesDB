@@ -1,18 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { WatchProvidersResultsItem } from '../interfaces/common/common.interfaces';
+import { CreditsResponseItem } from '../interfaces/common/common.interfaces';
 import { environment } from 'environment/environment';
 
 @Component({
-  selector: 'app-watch-providers',
-  templateUrl: './watch-providers.component.html',
-  styleUrls: ['./watch-providers.component.css']
+  selector: 'app-credits',
+  templateUrl: './credits.component.html',
+  styleUrls: ['./credits.component.css']
 })
-export class WatchProvidersComponent implements OnInit {
+export class CreditsComponent implements OnInit {
   private baseImageUrl: string;
 
-  @Input() watchProviders: WatchProvidersResultsItem[] | undefined;
-  @Input() watchProvidersTitle: string | undefined;
-  @Input() link: string | undefined;
+  @Input() credits: CreditsResponseItem[] | undefined;
+  @Input() creditsTitle: string | undefined;
+
   hideLeftArrow = true;
   hideRightArrow = true;
 
@@ -20,14 +20,14 @@ export class WatchProvidersComponent implements OnInit {
   private currentScrolledItem = 0;
 
   constructor() {
-    this.baseImageUrl = environment.baseImgUrl;
+    this.baseImageUrl = environment.baseImgOriginalUrl;
   }
 
   ngOnInit(): void {
-    if (this.watchProviders && this.watchProviders.length === 0)
-      this.watchProviders = undefined;
-    else if (this.watchProviders)
-      this.arrowsState.hideRightArrow = this.watchProviders.length <= 5;
+    if (this.credits && this.credits.length === 0)
+      this.credits = undefined;
+    else if (this.credits)
+      this.arrowsState.hideRightArrow = this.credits.length <= 6;
   }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {
@@ -53,14 +53,14 @@ export class WatchProvidersComponent implements OnInit {
     if (!this.hideRightArrow) {
       let newIndex = this.currentScrolledItem + 5;
 
-      if (newIndex >= this.watchProviders!.length - 2)
-        newIndex = this.watchProviders!.length - 2;
+      if (newIndex >= this.credits!.length - 2)
+        newIndex = this.credits!.length - 2;
 
       this.currentScrolledItem = newIndex;
       this.scrollCarrusel(carrusel);
 
       setTimeout(() => {
-        this.hideRightArrow = newIndex === this.watchProviders!.length - 2;
+        this.hideRightArrow = newIndex === this.credits!.length - 2;
         this.hideLeftArrow = false;
         this.arrowsState.hideRightArrow = this.hideRightArrow;
         this.arrowsState.hideLeftArrow = this.hideLeftArrow;
@@ -78,8 +78,8 @@ export class WatchProvidersComponent implements OnInit {
     this.hideLeftArrow = true;
   }
 
-  getImageSrc(logoSrc: string): string {
-    return `url(${this.baseImageUrl + logoSrc})`;
+  getImageSrc(profileSrc: string): string {
+    return `url(${this.baseImageUrl + profileSrc})`;
   }
 
   private scrollCarrusel(carrusel: HTMLUListElement) {

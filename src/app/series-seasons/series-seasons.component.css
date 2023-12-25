@@ -1,0 +1,110 @@
+.series-seasons-container {
+  padding-top: 2rem;
+}
+
+.series-seasons-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.series-seasons-select-container {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.series-seasons-select {
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  color: #fff;
+  border: 3px solid var(--primary-color);
+  background-color: var(--primary-color);
+  line-height: 1.5;
+  letter-spacing: .02em;
+  transform: scale(1);
+  transition: all 0.3s ease-out;
+  transition-delay: 0.1s;
+}
+
+.series-seasons-select:hover {
+  transform: scale(1.05);
+}
+
+.series-seasons-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0 3rem;
+  width: 60%;
+}
+
+.series-seasons-header-menu-action {
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.series-seasons-header-menu-action::before,
+.series-seasons-header-menu-action::after {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  top: 100%;
+  left: 0;
+  pointer-events: none;
+}
+
+.series-seasons-header-menu-action::before {
+  content: '';
+}
+
+.series-seasons-header-menu-action::before {
+  content: '';
+  transform-origin: 50% 100%;
+  transition: clip-path 0.3s, transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%, 100% 100%, 100% 0%);
+}
+
+.series-seasons-header-menu-action:not(.series-seasons-header-actions-active):hover::before {
+  transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
+  clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 50% 100%, 0 100%, 100% 100%, 100% 0%);
+  color: var(--primary-color);
+}
+
+.series-seasons-header-menu-action span {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.8, 1);
+  color: var(--analogous-color-1);
+}
+
+.series-seasons-header-menu-action:not(.series-seasons-header-actions-active):hover span {
+  transform: translate3d(0, -4px, 0);
+}
+
+.series-seasons-header-menu-action.series-seasons-header-actions-active span {
+  transform: translate3d(0, -4px, 0);
+}
+
+.series-seasons-header-menu-action.series-seasons-header-actions-active::before {
+  transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
+  clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 50% 100%, 0 100%, 100% 100%, 100% 0%);
+  color: var(--primary-color);
+}
+
+.series-seasons-content {
+  padding: 2rem;
+}
+
+@media(max-width: 900px) {
+  .series-seasons-content {
+    padding: 0.5rem;
+  }
+}

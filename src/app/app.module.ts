@@ -22,6 +22,10 @@ import { FeaturedSeriesComponent } from './featured-series/featured-series.compo
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { SeriesDetailComponent } from './series-detail/series-detail.component';
 import { WatchProvidersComponent } from './watch-providers/watch-providers.component';
+import { CreditsComponent } from './credits/credits.component';
+import { SeriesSeasonsComponent } from './series-seasons/series-seasons.component';
+import { SeriesSeasonsEpisodesComponent } from './series-seasons-episodes/series-seasons-episodes.component';
+import { SeriesSeasonsEpisodeDetailComponent } from './series-seasons-episode-detail/series-seasons-episode-detail.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,11 @@ import { WatchProvidersComponent } from './watch-providers/watch-providers.compo
     FeaturedSeriesComponent,
     MovieDetailComponent,
     SeriesDetailComponent,
-    WatchProvidersComponent
+    WatchProvidersComponent,
+    CreditsComponent,
+    SeriesSeasonsComponent,
+    SeriesSeasonsEpisodesComponent,
+    SeriesSeasonsEpisodeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +61,8 @@ import { WatchProvidersComponent } from './watch-providers/watch-providers.compo
       { path: 'movies', component: MoviesComponent },
       { path: 'movies/:movieId', component: MovieDetailComponent },
       { path: 'series', component: SeriesComponent },
-      { path: 'series/:seriesId', component: SeriesDetailComponent }
+      { path: 'series/:seriesId', component: SeriesDetailComponent },
+      { path: 'series/:seriesId/season/:seasonNumber/episode/:episodeNumber', component: SeriesSeasonsEpisodeDetailComponent }
     ])
   ],
   providers: [],

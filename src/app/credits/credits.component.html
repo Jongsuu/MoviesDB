@@ -1,0 +1,19 @@
+<section *ngIf="credits">
+  <h2 class="credits-carrusel-title">{{ creditsTitle }}</h2>
+  <div class="credits-carrusel-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
+    <ul class="credits-carrusel" #carrusel>
+      <li *ngFor="let item of credits" class="credits-carrusel-item" [style.background-image]="getImageSrc(item.profile_path)">
+        <article class="credits-carrusel-item-card">
+          <h6 class="credits-carrusel-item-info">{{ item.name }}</h6>
+          <h6 class="credits-carrusel-item-character">{{ item.character || item.job }}</h6>
+        </article>
+      </li>
+    </ul>
+    <a class="credits-carrusel-arrow credits-carrusel-arrow-left" [class.hide]="hideLeftArrow" (click)="onClickLeftArrow(carrusel)">
+      <i class="ti ti-angle-left"></i>
+    </a>
+    <a class="credits-carrusel-arrow credits-carrusel-arrow-right" [class.hide]="hideRightArrow" (click)="onClickRightArrow(carrusel)">
+      <i class="ti ti-angle-right"></i>
+    </a>
+  </div>
+</section>

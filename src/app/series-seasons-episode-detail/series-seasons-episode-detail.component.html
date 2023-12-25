@@ -1,0 +1,33 @@
+<section *ngIf="item">
+  <div class="episode-detail-container">
+    <article class="episode-detail" [style.background-image]="getImageSrc(false)">
+      <div class="episode-detail-content">
+        <img class="episode-detail-poster" src="{{ getImageSrc(true) }}"/>
+        <div class="episode-detail-info">
+          <h1>{{ item.name }}</h1>
+          <header class="episode-detail-card">
+            <div class="episode-detail-card-info">
+              <h2>{{ item.air_date | date:'shortDate' }}</h2>
+              <h2 class="episode-detail-length">{{ getEpisodeLength(item.runtime) }}</h2>
+            </div>
+            <div class="card-info">
+              <div class="card-info-votes" *ngIf="item.vote_average > 0">
+                <i class="ti ti-heart"></i>
+                <span>{{ item.vote_average | number:'1.1-1' }}</span>
+              </div>
+              <div class="card-info-star" *ngFor="let guest of item.guest_stars">
+                <i class="ti ti-star"></i>
+                <span>{{ guest.name }}</span>
+              </div>
+            </div>
+          </header>
+          <p class="episode-detail-description">{{ item.overview }}</p>
+        </div>
+      </div>
+    </article>
+  </div>
+  <footer class="episode-detail-more-info" *ngIf="episodeCast || episodeCrew">
+    <app-credits [credits]="episodeCast" [creditsTitle]="'Cast of ' + item.name"></app-credits>
+    <app-credits [credits]="episodeCrew" [creditsTitle]="'Crew of ' + item.name"></app-credits>
+  </footer>
+</section>

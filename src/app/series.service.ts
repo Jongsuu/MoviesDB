@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environment/environment';
-import { CatalogResponse, GenresListResponse } from './interfaces/common/common.interfaces';
+import { CatalogResponse, CreditsResponse, GenresListResponse, WatchProviders } from './interfaces/common/common.interfaces';
 import { Serie } from './interfaces/series/series.interface';
+import { SeriesDetail, SeriesSeasonDetail, SeriesSeasonEpisodeDetail } from './interfaces/series/seriesDetail.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,54 @@ export class SeriesService {
 
   getSimilarSeriesCatalog(id: number) {
     return this.http.get<CatalogResponse<Serie>>(this.baseUrl + `/tv/${id}/similar`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getSeriesById(id: number) {
+    return this.http.get<SeriesDetail>(this.baseUrl + `/tv/${id}`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getSeriesWatchProviders(id: number) {
+    return this.http.get<WatchProviders>(this.baseUrl + `/tv/${id}/watch/providers`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getSeriesCredits(id: number) {
+    return this.http.get<CreditsResponse>(this.baseUrl + `/tv/${id}/credits`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getSeriesSeasonDetail(seriesId: number, seasonNumber: number) {
+    return this.http.get<SeriesSeasonDetail>(this.baseUrl + `/tv/${seriesId}/season/${seasonNumber}`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getSeriesSeasonEpisodeDetail(seriesId: number, seasonNumber: number, episodeNumber: number) {
+    return this.http.get<SeriesSeasonEpisodeDetail>(this.baseUrl + `/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      }
+    });
+  }
+
+  getSeriesSeasonEpisodeCredits(seriesId: number, seasonNumber: number, episodeNumber: number) {
+    return this.http.get<CreditsResponse>(this.baseUrl + `/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}/credits`, {
       headers: {
         Authorization: this.getAuthorization()
       }

@@ -1,5 +1,6 @@
 .movie-detail-container {
   margin-top: 2rem;
+  box-shadow: 2px 7px 15px -2px #000000;
 }
 
 .movie-detail {
@@ -56,6 +57,7 @@
 .card-info {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.75rem;
   font-size: 1.2rem;
 }
@@ -173,5 +175,6 @@
 
 .movie-detail-more-info {
   background-color: #e8e8e8;
-  width: 100%;
+  padding: 2.5rem 0 1rem 1.5rem;
+  position: relative;
 }

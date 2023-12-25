@@ -1,1 +1,45 @@
-<p>series-detail works!</p>
+<section *ngIf="item">
+  <div class="series-detail-container">
+    <article class="series-detail" [style.background-image]="getImageSrc(false)">
+      <div class="series-detail-content">
+        <img class="series-detail-poster" src="{{ getImageSrc(true) }}"/>
+        <div class="series-detail-info">
+          <h1>{{ item.name }}</h1>
+          <header class="series-detail-card">
+            <div class="series-detail-card-info">
+              <h2>{{ item.last_air_date | date:'shortDate' }}</h2>
+              <h2 class="series-detail-length">{{ getSeasonsCount() }}</h2>
+            </div>
+            <div class="card-info">
+              <div class="card-info-votes" *ngIf="item.vote_average > 0">
+                <i class="ti ti-heart"></i>
+                <span>{{ item.vote_average | number:'1.1-1' }}</span>
+              </div>
+              <div class="card-info-genre" *ngFor="let genre of item.genres">
+                <span>{{ genre.name }}</span>
+              </div>
+            </div>
+          </header>
+          <p class="series-detail-tagline">{{ item.tagline }}</p>
+          <p class="series-detail-description">{{ item.overview }}</p>
+          <footer class="series-detail-actions">
+            <!--
+              <a class="series-detail-play-link" href="{{ getTrailerUrl() }}" target="_blank">
+              <div class="series-detail-play-link-icon">
+              <i class="ti ti-control-play"></i>
+              </div>
+              <span>Play</span>
+              </a>
+            -->
+            <a class="series-detail-link" href="{{ item.homepage }}" target="_blank" *ngIf="item.homepage">
+              <i class="ti ti-info-alt"></i>
+            </a>
+          </footer>
+        </div>
+      </div>
+    </article>
+  </div>
+  <footer class="series-detail-more-info">
+    <app-series-seasons [seasons]="item.seasons" [seasonsCount]="item.number_of_seasons" [seriesId]="item.id"></app-series-seasons>
+  </footer>
+</section>

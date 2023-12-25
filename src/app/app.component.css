@@ -6,7 +6,7 @@
   position: fixed;
   opacity: 0;
   bottom: 2rem;
-  right: 2rem;
+  left: 2rem;
   z-index: 1;
   padding: 0.5rem 0.75rem;
   border-radius: 50%;

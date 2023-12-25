@@ -1,13 +1,11 @@
-<div *ngIf="list">
-  <div>
-    <div class="featured-movies-carrusel-header">
-      <h2 class="featured-movies-carrusel-title">{{ carruselTitle }}</h2>
-      <a *ngIf="seeMoreLink" class="featured-movies-carrusel-seemore" [routerLink]="[seeMoreLink]">
-        <span>See more</span>
-        <i class="ti ti-angle-right"></i>
-      </a>
-    </div>
-  </div>
+<section *ngIf="list">
+  <header class="featured-movies-carrusel-header">
+    <h2 class="featured-movies-carrusel-title">{{ carruselTitle }}</h2>
+    <a *ngIf="seeMoreLink" class="featured-movies-carrusel-seemore" [routerLink]="[seeMoreLink]">
+      <span>See more</span>
+      <i class="ti ti-angle-right"></i>
+    </a>
+  </header>
   <div class="featured-movies-carrusel-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
     <ul class="featured-movies-carrusel" #carrusel>
       <app-featured-movies-item *ngFor="let item of list" [item]="item" [canHover]="canHoverItem" [genreList]="genreList"></app-featured-movies-item>
@@ -19,4 +17,4 @@
       <i class="ti ti-angle-right"></i>
     </a>
   </div>
-</div>
+</section>

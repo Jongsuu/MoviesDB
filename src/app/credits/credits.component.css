@@ -1,0 +1,108 @@
+.credits-carrusel-title {
+  cursor: default;
+  margin-bottom: 0;
+  margin-left: 2rem;
+  color: var(--primary-color);
+}
+
+.credits-carrusel {
+  position: relative;
+  display: flex;
+  height: 300px;
+  gap: 0 2rem;
+  padding: 1rem 1.5rem 1.5rem;
+  margin: 0;
+  list-style: none;
+  overflow: hidden hidden;
+  scroll-snap-type: x proximity;
+}
+
+.credits-carrusel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.credits-carrusel-arrow {
+  position: absolute;
+  margin: 0;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 4rem 1rem;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  opacity: 1;
+}
+
+.credits-carrusel-arrow.hide {
+  opacity: 0;
+  cursor: default;
+}
+
+.credits-carrusel-arrow i {
+  font-weight: 200;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in-out;
+  padding: 0;
+}
+
+.credits-carrusel-arrow-left {
+  left: 0;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.credits-carrusel-arrow-right {
+  right: 0.5rem;
+  border-radius: 0 1rem 1rem 0;
+}
+
+.credits-carrusel-arrow:hover i {
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.credits-carrusel-item {
+  position: relative;
+  flex: 0 0 100%;
+  box-shadow: 2px 7px 15px -2px #000000;
+  border-radius: 1rem;
+  min-width: 150px;
+  max-width: 250px;
+  width: 250px;
+  height: 100%;
+  max-height: 350px;
+  overflow: hidden;
+  scroll-snap-align: center;
+  transition: all 0.3s ease-in-out;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.credits-carrusel-item-card {
+  padding: 0.5rem 1rem 1rem 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(220, 61, 17, 0.9);
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 2rem);
+}
+
+.credits-carrusel-item-info {
+  width: 100%;
+  color: #fff;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.credits-carrusel-item-character {
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 400;
+}

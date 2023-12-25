@@ -4,6 +4,7 @@ import { Movie } from '../interfaces/movies/movies.interfaces';
 import { MoviesService } from '../movies.service';
 import { SeriesService } from '../series.service';
 import { Genre } from '../interfaces/common/common.interfaces';
+import { MovieDetail } from '../interfaces/movies/movieDetail.interfaces';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,8 @@ export class HomeComponent implements OnInit {
   popularMovies: Movie[] = [];
   dramaMovies: Movie[] = [];
   thrillerMovies: Movie[] = [];
+
+  featuredDramaMovie: MovieDetail | undefined;
 
   popularSeries: Serie[] = [];
   mysterySeries: Serie[] = [];
@@ -40,7 +43,13 @@ export class HomeComponent implements OnInit {
 
       if (drama) {
         this.moviesService.getMoviesByGenre(drama.id.toString()).subscribe((response) => {
-          this.dramaMovies = response.results.filter(series => series.poster_path && series.backdrop_path && series.overview.length > 0);
+          let movies = response.results.filter(series => series.poster_path && series.backdrop_path && series.overview.length > 0);
+
+          this.moviesService.getMovieById(movies.splice(0, 1)[0].id).subscribe((response) => {
+            this.featuredDramaMovie = response;
+          });
+          this.dramaMovies = movies;
+
           this.loadSimilarMovies();
         });
       }
