@@ -62,25 +62,6 @@
   font-size: 1.2rem;
 }
 
-.card-info-votes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0 0.3rem;
-  border-radius: 0.25rem;
-  background-color: var(--primary-color);
-  padding: 0.5rem;
-}
-
-.card-info-votes span {
-  font-weight: 700;
-}
-
-.card-info-votes i {
-  color: #fbe4f3;
-  font-weight: 900;
-}
-
 .card-info-genre {
   border-radius: 0.25rem;
   background-color: #db51bd;

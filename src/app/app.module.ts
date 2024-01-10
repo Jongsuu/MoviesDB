@@ -26,6 +26,7 @@ import { CreditsComponent } from './credits/credits.component';
 import { SeriesSeasonsComponent } from './series-seasons/series-seasons.component';
 import { SeriesSeasonsEpisodesComponent } from './series-seasons-episodes/series-seasons-episodes.component';
 import { SeriesSeasonsEpisodeDetailComponent } from './series-seasons-episode-detail/series-seasons-episode-detail.component';
+import { CircularProgressBarComponent } from './circular-progress-bar/circular-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SeriesSeasonsEpisodeDetailComponent } from './series-seasons-episode-de
     CreditsComponent,
     SeriesSeasonsComponent,
     SeriesSeasonsEpisodesComponent,
-    SeriesSeasonsEpisodeDetailComponent
+    SeriesSeasonsEpisodeDetailComponent,
+    CircularProgressBarComponent
   ],
   imports: [
     BrowserModule,

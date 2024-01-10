@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   border-radius: 1rem 0 0 1rem;
+  box-shadow: 2px 7px 15px -2px #000000;
 }
 
 .featured-movie {

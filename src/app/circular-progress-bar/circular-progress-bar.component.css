@@ -1,0 +1,30 @@
+.circular-progress-container {
+  display: grid;
+  place-items: center;
+}
+
+.circular-progress {
+  position: relative;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  box-shadow: 4px 4px 10px -2px #000000;
+}
+
+.circular-progress:before {
+  content: "";
+  position: absolute;
+  height: 84%;
+  width: 84%;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.value-container {
+  position: relative;
+  font-size: 1.5rem;
+  color: #231c3d;
+  font-weight: 500;
+}

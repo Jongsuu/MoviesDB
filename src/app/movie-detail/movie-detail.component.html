@@ -11,9 +11,8 @@
               <h2 class="movie-detail-length">{{ getMovieLength(item.runtime) }}</h2>
             </div>
             <div class="card-info">
-              <div class="card-info-votes" *ngIf="item.vote_average > 0">
-                <i class="ti ti-heart"></i>
-                <span>{{ item.vote_average | number:'1.1-1' }}</span>
+              <div *ngIf="item.vote_average > 0">
+                <app-circular-progress-bar [maxValue]="item.vote_average"></app-circular-progress-bar>
               </div>
               <div class="card-info-genre" *ngFor="let genre of item.genres">
                 <span>{{ genre.name }}</span>

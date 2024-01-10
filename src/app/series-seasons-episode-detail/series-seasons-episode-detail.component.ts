@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CreditsResponseItem, WatchProvidersResultsItem } from '../interfaces/common/common.interfaces';
+import { CreditsResponseItem } from '../interfaces/common/common.interfaces';
 import { SeriesService } from '../series.service';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'environment/environment';

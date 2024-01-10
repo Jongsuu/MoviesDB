@@ -17,7 +17,8 @@ export class CreditsComponent implements OnInit {
   hideRightArrow = true;
 
   private arrowsState: { hideLeftArrow: boolean, hideRightArrow: boolean } = { hideLeftArrow: true, hideRightArrow: false };
-  private currentScrolledItem = 0;
+  private currentScroll = 0;
+  private itemWidth = 0;
 
   constructor() {
     this.baseImageUrl = environment.baseImgOriginalUrl;
@@ -26,46 +27,44 @@ export class CreditsComponent implements OnInit {
   ngOnInit(): void {
     if (this.credits && this.credits.length === 0)
       this.credits = undefined;
-    else if (this.credits)
-      this.arrowsState.hideRightArrow = this.credits.length <= 6;
   }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {
-    if (!this.hideLeftArrow) {
-      let newIndex = this.currentScrolledItem - 5;
+    if (this.itemWidth === 0)
+      this.itemWidth = carrusel.scrollWidth / (this.credits?.length ?? 1);
 
-      if (newIndex <= 5)
-        newIndex = 0;
+    this.currentScroll -= carrusel.clientWidth + this.itemWidth;
 
-      this.currentScrolledItem = newIndex;
-      this.scrollCarrusel(carrusel);
+    if (this.currentScroll <= this.itemWidth * 4)
+      this.currentScroll = 0;
 
-      setTimeout(() => {
-        this.hideLeftArrow = this.currentScrolledItem === 0;
-        this.hideRightArrow = false;
-        this.arrowsState.hideRightArrow = this.hideRightArrow;
-        this.arrowsState.hideLeftArrow = this.hideLeftArrow;
-      }, 250);
-    }
+    this.scrollCarrusel(carrusel);
+
+    setTimeout(() => {
+      this.hideLeftArrow = this.currentScroll === 0;
+      this.hideRightArrow = false;
+      this.arrowsState.hideRightArrow = this.hideRightArrow;
+      this.arrowsState.hideLeftArrow = this.hideLeftArrow;
+    }, 250);
   }
 
   onClickRightArrow(carrusel: HTMLUListElement) {
-    if (!this.hideRightArrow) {
-      let newIndex = this.currentScrolledItem + 5;
+    if (this.itemWidth === 0)
+      this.itemWidth = carrusel.scrollWidth / (this.credits?.length ?? 1);
 
-      if (newIndex >= this.credits!.length - 2)
-        newIndex = this.credits!.length - 2;
+    this.currentScroll += carrusel.clientWidth - this.itemWidth;
 
-      this.currentScrolledItem = newIndex;
-      this.scrollCarrusel(carrusel);
+    if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth * 4)
+      this.currentScroll = carrusel.scrollWidth;
 
-      setTimeout(() => {
-        this.hideRightArrow = newIndex === this.credits!.length - 2;
-        this.hideLeftArrow = false;
-        this.arrowsState.hideRightArrow = this.hideRightArrow;
-        this.arrowsState.hideLeftArrow = this.hideLeftArrow;
-      }, 250);
-    }
+    this.scrollCarrusel(carrusel);
+
+    setTimeout(() => {
+      this.hideRightArrow = this.currentScroll === carrusel.scrollWidth;
+      this.hideLeftArrow = false;
+      this.arrowsState.hideRightArrow = this.hideRightArrow;
+      this.arrowsState.hideLeftArrow = this.hideLeftArrow;
+    }, 250);
   }
 
   onMouseOver() {
@@ -83,6 +82,9 @@ export class CreditsComponent implements OnInit {
   }
 
   private scrollCarrusel(carrusel: HTMLUListElement) {
-    carrusel.children[this.currentScrolledItem].scrollIntoView({ behavior: "smooth", block: "center", inline: "start" });
+    carrusel.scrollTo({
+      left: this.currentScroll,
+      behavior: "smooth"
+    });
   }
 }

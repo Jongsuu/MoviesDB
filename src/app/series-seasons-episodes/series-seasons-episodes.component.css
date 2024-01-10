@@ -19,7 +19,7 @@
   gap: 0 1rem;
   cursor: pointer;
   transform: scale(1);
-  transition: all 0.3s ease-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .series-season-episodes-item:hover {

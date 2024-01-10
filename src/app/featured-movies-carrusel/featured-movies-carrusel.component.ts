@@ -17,28 +17,30 @@ export class FeaturedMoviesCarruselComponent implements OnInit {
   canHoverItem = true;
 
   private arrowsState: { hideLeftArrow: boolean, hideRightArrow: boolean } = { hideLeftArrow: true, hideRightArrow: false };
-  private currentScrolledItem = 0;
+  private currentScroll = 0;
+  private itemWidth = 0;
 
   ngOnInit(): void {
     if (!this.list || this.list.length === 0)
       this.list = undefined;
-    else if (this.list)
-      this.arrowsState.hideRightArrow = this.list.length <= 5;
   }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {
     if (!this.hideLeftArrow) {
       this.canHoverItem = false;
-      let newIndex = this.currentScrolledItem - 5;
 
-      if (newIndex <= 5)
-        newIndex = 0;
+      if (this.itemWidth === 0)
+        this.itemWidth = carrusel.scrollWidth / (this.list?.length ?? 1);
 
-      this.currentScrolledItem = newIndex;
+      this.currentScroll -= carrusel.clientWidth + this.itemWidth;
+
+      if (this.currentScroll <= this.itemWidth * 2)
+        this.currentScroll = 0;
+
       this.scrollCarrusel(carrusel);
 
       setTimeout(() => {
-        this.hideLeftArrow = this.currentScrolledItem === 0;
+        this.hideLeftArrow = this.currentScroll === 0;
         this.hideRightArrow = false;
         this.arrowsState.hideRightArrow = this.hideRightArrow;
         this.arrowsState.hideLeftArrow = this.hideLeftArrow;
@@ -49,16 +51,19 @@ export class FeaturedMoviesCarruselComponent implements OnInit {
   onClickRightArrow(carrusel: HTMLUListElement) {
     if (!this.hideRightArrow) {
       this.canHoverItem = false;
-      let newIndex = this.currentScrolledItem + 5;
 
-      if (newIndex >= this.list!.length - 5)
-        newIndex = this.list!.length - 5;
+      if (this.itemWidth === 0)
+        this.itemWidth = carrusel.scrollWidth / (this.list?.length ?? 1);
 
-      this.currentScrolledItem = newIndex;
+      this.currentScroll += carrusel.clientWidth - this.itemWidth;
+
+      if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth * 2)
+        this.currentScroll = carrusel.scrollWidth;
+
       this.scrollCarrusel(carrusel);
 
       setTimeout(() => {
-        this.hideRightArrow = newIndex === this.list!.length - 5;
+        this.hideRightArrow = this.currentScroll === carrusel.scrollWidth;
         this.hideLeftArrow = false;
         this.arrowsState.hideRightArrow = this.hideRightArrow;
         this.arrowsState.hideLeftArrow = this.hideLeftArrow;
@@ -77,7 +82,10 @@ export class FeaturedMoviesCarruselComponent implements OnInit {
   }
 
   private scrollCarrusel(carrusel: HTMLUListElement) {
-    carrusel.children[this.currentScrolledItem].scrollIntoView({ behavior: "smooth", block: "center", inline: "start" });
+    carrusel.scrollTo({
+      left: this.currentScroll,
+      behavior: "smooth"
+    });
 
     setTimeout(() => {
       this.canHoverItem = true;
