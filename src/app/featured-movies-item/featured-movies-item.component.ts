@@ -36,11 +36,16 @@ export class FeaturedMoviesItemComponent implements OnInit {
   }
 
   onMouseOver() {
-    if (this.canHover)
-      this.activeBackgroundStyle = `url(${this.getImageSrc(true)})`;
+    if (this.canHover) {
+      setTimeout(() => {
+        this.activeBackgroundStyle = `url(${this.getImageSrc(true)})`;
+      }, 150);
+    }
   }
 
   onMouseLeave() {
-    this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
+    setTimeout(() => {
+      this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
+    }, 150);
   }
 }

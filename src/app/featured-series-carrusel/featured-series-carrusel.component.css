@@ -118,3 +118,13 @@
   font-weight: 900;
   font-size: 2rem;
 }
+
+@media (prefers-color-scheme: dark) {
+  .featured-series-carrusel-title {
+    color: #e3e3e3;
+  }
+
+  .featured-series-carrusel-seemore span {
+    color: #ea7feb;
+  }
+}

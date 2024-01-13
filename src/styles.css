@@ -14,7 +14,6 @@
 body {
   font-family: Roboto, Sans-Serif;
   scroll-behavior: smooth;
-  background: linear-gradient(rgba(220, 17, 176, 0.3), rgba(220, 17, 75, 0.5));
   margin: 0;
 }
 

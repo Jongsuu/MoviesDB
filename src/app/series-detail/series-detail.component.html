@@ -22,14 +22,6 @@
           <p class="series-detail-tagline">{{ item.tagline }}</p>
           <p class="series-detail-description">{{ item.overview }}</p>
           <footer class="series-detail-actions">
-            <!--
-              <a class="series-detail-play-link" href="{{ getTrailerUrl() }}" target="_blank">
-              <div class="series-detail-play-link-icon">
-              <i class="ti ti-control-play"></i>
-              </div>
-              <span>Play</span>
-              </a>
-            -->
             <a class="series-detail-link" href="{{ item.homepage }}" target="_blank" *ngIf="item.homepage">
               <i class="ti ti-info-alt"></i>
             </a>

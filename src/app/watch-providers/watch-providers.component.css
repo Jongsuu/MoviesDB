@@ -147,3 +147,9 @@
   margin: 0;
   font-size: 1.25rem;
 }
+
+@media (prefers-color-scheme: dark) {
+  .watch-providers-title span {
+    color: #e3e3e3;
+  }
+}

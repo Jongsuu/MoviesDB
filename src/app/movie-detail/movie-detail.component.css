@@ -159,3 +159,9 @@
   padding: 2.5rem 0 1rem 1.5rem;
   position: relative;
 }
+
+@media (prefers-color-scheme: dark) {
+  .movie-detail-more-info {
+    background-color: #2b2b2b;
+  }
+}

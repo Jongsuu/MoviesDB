@@ -27,6 +27,7 @@ import { SeriesSeasonsComponent } from './series-seasons/series-seasons.componen
 import { SeriesSeasonsEpisodesComponent } from './series-seasons-episodes/series-seasons-episodes.component';
 import { SeriesSeasonsEpisodeDetailComponent } from './series-seasons-episode-detail/series-seasons-episode-detail.component';
 import { CircularProgressBarComponent } from './circular-progress-bar/circular-progress-bar.component';
+import { ExploreComponent } from './explore/explore.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CircularProgressBarComponent } from './circular-progress-bar/circular-p
     SeriesSeasonsComponent,
     SeriesSeasonsEpisodesComponent,
     SeriesSeasonsEpisodeDetailComponent,
-    CircularProgressBarComponent
+    CircularProgressBarComponent,
+    ExploreComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { CircularProgressBarComponent } from './circular-progress-bar/circular-p
       { path: 'movies/:movieId', component: MovieDetailComponent },
       { path: 'series', component: SeriesComponent },
       { path: 'series/:seriesId', component: SeriesDetailComponent },
-      { path: 'series/:seriesId/season/:seasonNumber/episode/:episodeNumber', component: SeriesSeasonsEpisodeDetailComponent }
+      { path: 'series/:seriesId/season/:seasonNumber/episode/:episodeNumber', component: SeriesSeasonsEpisodeDetailComponent },
+      { path: 'explore', component: ExploreComponent }
     ])
   ],
   providers: [],

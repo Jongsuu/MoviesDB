@@ -106,3 +106,9 @@
   margin: 0;
   font-weight: 400;
 }
+
+@media(prefers-color-scheme: dark) {
+  .credits-carrusel-title {
+    color: #e3e3e3;
+  }
+}

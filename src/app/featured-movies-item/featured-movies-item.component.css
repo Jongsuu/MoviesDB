@@ -3,7 +3,6 @@
   cursor: pointer;
   box-shadow: 2px 7px 15px -2px #000000;
   border-radius: 1rem;
-  transition: all 0.5s;
   position: relative;
   min-width: 250px;
   max-width: 500px;
@@ -11,6 +10,7 @@
   max-height: 350px;
   width: 250px;
   transition: all 0.3s ease-in-out;
+  transition-delay: 0.1s;
   overflow: hidden;
   scroll-snap-align: center;
 }
@@ -38,6 +38,7 @@
   opacity: 0;
   transform: translateY(25px);
   transition: all 0.4s;
+  transition-delay: 0.1s;
 }
 
 .featured-item-card h2 {
@@ -87,7 +88,6 @@
 
 .card-info-votes i {
   color: #fbe4f3;
-  font-weight: 900;
 }
 
 .card-info-genre {

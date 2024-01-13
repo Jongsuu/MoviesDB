@@ -91,6 +91,16 @@ nav {
   transform: translate3d(0, -2px, 0);
 }
 
+@media (prefers-color-scheme: dark) {
+  .nav-item span {
+    color: #ea7feb;
+  }
+
+  .nav-container.nav-scrolled .nav-item span {
+    color: var(--analogous-color-1);
+  }
+}
+
 @media(max-width: 1366px) {
   nav {
     padding: 0 5rem;

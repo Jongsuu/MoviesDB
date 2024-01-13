@@ -27,8 +27,13 @@ export class SeriesDetailComponent {
   }
 
   ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    const seriesId = Number(routeParams.get("seriesId"));
+    this.route.params.subscribe(params => {
+      this.paramsChange(params["seriesId"]);
+    });
+  }
+
+  paramsChange(seriesId: number) {
+    this.item = undefined as any;
 
     this.seriesService.getSeriesById(seriesId).subscribe((response) => {
       let today = new Date();

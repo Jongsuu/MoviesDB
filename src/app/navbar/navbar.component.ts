@@ -20,8 +20,8 @@ export class NavbarComponent {
       url: "/series"
     },
     {
-      text: "Artists",
-      url: "/artists"
+      text: "Explore",
+      url: "/explore"
     }
   ];
 

@@ -5,6 +5,7 @@ import { MoviesService } from '../movies.service';
 import { SeriesService } from '../series.service';
 import { Genre } from '../interfaces/common/common.interfaces';
 import { MovieDetail } from '../interfaces/movies/movieDetail.interfaces';
+import { SeriesDetail } from '../interfaces/series/seriesDetail.interface';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   thrillerMovies: Movie[] = [];
 
   featuredDramaMovie: MovieDetail | undefined;
+  featuredPopularSeries: SeriesDetail | undefined;
 
   popularSeries: Serie[] = [];
   mysterySeries: Serie[] = [];
@@ -69,7 +71,12 @@ export class HomeComponent implements OnInit {
     });
 
     this.seriesService.getPopularSeriesCatalog().subscribe((response) => {
-      this.popularSeries = response.results.filter(series => series.poster_path && series.backdrop_path && series.overview.length > 0);
+      let series = response.results.filter(series => series.poster_path && series.backdrop_path && series.overview.length > 0);
+
+      this.seriesService.getSeriesById(series.splice(0, 1)[0].id).subscribe((response) => {
+        this.featuredPopularSeries = response;
+      });
+      this.popularSeries = series;
     });
 
     this.seriesService.getGenresList().subscribe((response) => {

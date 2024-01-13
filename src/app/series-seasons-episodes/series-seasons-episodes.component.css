@@ -63,6 +63,16 @@
   -webkit-box-orient: vertical;
 }
 
+@media(prefers-color-scheme: dark) {
+  .series-season-episodes-item {
+    color: #e3e3e3;
+  }
+
+  .series-season-episodes-item-title {
+    color: #ea7feb;
+  }
+}
+
 @media(max-width: 1500px) {
   .series-season-episodes-list-container {
     grid-template-columns: minmax(300px, 1fr);

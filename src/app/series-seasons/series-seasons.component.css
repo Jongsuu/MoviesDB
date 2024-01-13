@@ -103,6 +103,12 @@
   padding: 2rem;
 }
 
+@media(prefers-color-scheme: dark) {
+  .series-seasons-header-menu-action span {
+    color: #ea7feb;
+  }
+}
+
 @media(max-width: 900px) {
   .series-seasons-content {
     padding: 0.5rem;

@@ -20,5 +20,8 @@
   </div>
   <div class="series-seasons-content">
     <app-series-seasons-episodes [episodes]="seasonEpisodes" [showEpisodes]="actionState.episodes"></app-series-seasons-episodes>
+    <div *ngIf="actionState.related">
+      <app-featured-series-carrusel [list]="relatedSeries" [carruselTitle]="''" [genreList]="genreList"></app-featured-series-carrusel>
+    </div>
   </div>
 </div>

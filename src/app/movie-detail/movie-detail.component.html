@@ -39,7 +39,7 @@
   <footer class="movie-detail-more-info" *ngIf="movieCast || movieCrew || rentWatchProviders || buyWatchProviders">
     <app-credits [credits]="movieCast" [creditsTitle]="'Cast of ' + item.title"></app-credits>
     <app-credits [credits]="movieCrew" [creditsTitle]="'Crew of ' + item.title"></app-credits>
-    <app-watch-providers [watchProvidersTitle]="'Available to rent in'" [watchProviders]="rentWatchProviders" [link]="watchProvidersLink"></app-watch-providers>
-    <app-watch-providers [watchProvidersTitle]="'Available to buy in'" [watchProviders]="buyWatchProviders" [link]="watchProvidersLink"></app-watch-providers>
+    <app-watch-providers [watchProvidersTitle]="'Rent in'" [watchProviders]="rentWatchProviders" [link]="watchProvidersLink"></app-watch-providers>
+    <app-watch-providers [watchProvidersTitle]="'Buy in'" [watchProviders]="buyWatchProviders" [link]="watchProvidersLink"></app-watch-providers>
   </footer>
 </section>

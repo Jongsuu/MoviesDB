@@ -29,7 +29,7 @@
   position: absolute;
   bottom: 0;
   opacity: 0;
-  background-color: rgb(217, 124, 197);
+  background-color: #ffa8ff;
   border-radius: 0 0 1rem 1rem;
   z-index: 1;
   transform: translateY(25px);
@@ -50,7 +50,7 @@
 
 .series-carrusel-item-card {
   opacity: 1;
-  color: #fff;
+  color: #001111;
   padding: 5px 10px 10px;
   border-radius: 0 0 1rem 1rem;
 }
@@ -87,17 +87,13 @@
   justify-content: center;
   gap: 0 0.3rem;
   border-radius: 0.25rem;
-  background-color: #e6d139;
+  background-color: var(--primary-color);
   padding: 0.25rem;
+  color: #fbe4f3;
 }
 
 .card-info-votes span {
   font-weight: 700;
-}
-
-.card-info-votes i {
-  color: #fbe4f3;
-  font-weight: 900;
 }
 
 .series-carrusel-item-card-a {
