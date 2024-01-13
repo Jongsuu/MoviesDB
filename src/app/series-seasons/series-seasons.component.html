@@ -3,7 +3,7 @@
     <div class="series-seasons-select-container">
       <select class="series-seasons-select" (change)="onSeasonsSelectChange(select)" #select>
         <option value="{{ season.season_number }}" *ngFor="let season of seasons; index as i;"
-        [attr.selected]="i === 0 ? 'true' : null">Season {{ season.season_number }}</option>
+        [attr.selected]="i === 0 && season.season_number === 1 || season.season_number === 1 ? 'true' : null">Season {{ season.season_number }}</option>
       </select>
     </div>
     <div class="series-seasons-header-actions">
@@ -22,6 +22,12 @@
     <app-series-seasons-episodes [episodes]="seasonEpisodes" [showEpisodes]="actionState.episodes"></app-series-seasons-episodes>
     <div *ngIf="actionState.related">
       <app-featured-series-carrusel [list]="relatedSeries" [carruselTitle]="''" [genreList]="genreList"></app-featured-series-carrusel>
+    </div>
+    <div *ngIf="actionState.details">
+      <app-credits [credits]="seriesCast" [creditsTitle]="'Cast of ' + seriesName"></app-credits>
+      <app-credits [credits]="seriesCrew" [creditsTitle]="'Crew of ' + seriesName"></app-credits>
+      <app-watch-providers [watchProvidersTitle]="'Rent in'" [watchProviders]="rentWatchProviders" [link]="watchProvidersLink"></app-watch-providers>
+      <app-watch-providers [watchProvidersTitle]="'Buy in'" [watchProviders]="buyWatchProviders" [link]="watchProvidersLink"></app-watch-providers>
     </div>
   </div>
 </div>
