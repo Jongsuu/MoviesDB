@@ -13,10 +13,9 @@ export class FeaturedSeriesCarruselComponent implements OnInit {
   @Input() carruselTitle: string | undefined;
   @Input() seeMoreLink: string | undefined;
   hideLeftArrow = true;
-  hideRightArrow = true;
+  hideRightArrow = false;
   canHoverItem = true;
 
-  private arrowsState: { hideLeftArrow: boolean, hideRightArrow: boolean } = { hideLeftArrow: true, hideRightArrow: false };
   private currentScroll = 0;
   private itemWidth = 0;
 
@@ -42,8 +41,6 @@ export class FeaturedSeriesCarruselComponent implements OnInit {
       setTimeout(() => {
         this.hideLeftArrow = this.currentScroll === 0;
         this.hideRightArrow = false;
-        this.arrowsState.hideRightArrow = this.hideRightArrow;
-        this.arrowsState.hideLeftArrow = this.hideLeftArrow;
       }, 250);
     }
   }
@@ -65,20 +62,8 @@ export class FeaturedSeriesCarruselComponent implements OnInit {
       setTimeout(() => {
         this.hideRightArrow = this.currentScroll === carrusel.scrollWidth;
         this.hideLeftArrow = false;
-        this.arrowsState.hideRightArrow = this.hideRightArrow;
-        this.arrowsState.hideLeftArrow = this.hideLeftArrow;
       }, 250);
     }
-  }
-
-  onMouseOver() {
-    this.hideLeftArrow = this.arrowsState.hideLeftArrow;
-    this.hideRightArrow = this.arrowsState.hideRightArrow;
-  }
-
-  onMouseExit() {
-    this.hideRightArrow = true;
-    this.hideLeftArrow = true;
   }
 
   private scrollCarrusel(carrusel: HTMLUListElement) {

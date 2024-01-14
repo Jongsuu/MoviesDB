@@ -14,10 +14,10 @@ export class WatchProvidersComponent implements OnInit {
   @Input() watchProvidersTitle: string | undefined;
   @Input() link: string | undefined;
   hideLeftArrow = true;
-  hideRightArrow = true;
+  hideRightArrow = false;
 
-  private arrowsState: { hideLeftArrow: boolean, hideRightArrow: boolean } = { hideLeftArrow: true, hideRightArrow: false };
-  private currentScrolledItem = 0;
+  private currentScroll = 0;
+  private itemWidth = 0;
 
   constructor() {
     this.baseImageUrl = environment.baseImgUrl;
@@ -26,63 +26,50 @@ export class WatchProvidersComponent implements OnInit {
   ngOnInit(): void {
     if (this.watchProviders && this.watchProviders.length === 0)
       this.watchProviders = undefined;
-    else if (this.watchProviders)
-      this.arrowsState.hideRightArrow = this.watchProviders.length <= 5;
   }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {
-    if (!this.hideLeftArrow) {
-      let newIndex = this.currentScrolledItem - 5;
+    if (this.itemWidth === 0)
+      this.itemWidth = carrusel.scrollWidth / (this.watchProviders?.length ?? 1);
 
-      if (newIndex <= 5)
-        newIndex = 0;
+    this.currentScroll -= carrusel.clientWidth + this.itemWidth;
 
-      this.currentScrolledItem = newIndex;
-      this.scrollCarrusel(carrusel);
+    if (this.currentScroll <= this.itemWidth * 4)
+      this.currentScroll = 0;
 
-      setTimeout(() => {
-        this.hideLeftArrow = this.currentScrolledItem === 0;
-        this.hideRightArrow = false;
-        this.arrowsState.hideRightArrow = this.hideRightArrow;
-        this.arrowsState.hideLeftArrow = this.hideLeftArrow;
-      }, 250);
-    }
+    this.scrollCarrusel(carrusel);
+
+    setTimeout(() => {
+      this.hideLeftArrow = this.currentScroll === 0;
+      this.hideRightArrow = false;
+    }, 250);
   }
 
   onClickRightArrow(carrusel: HTMLUListElement) {
-    if (!this.hideRightArrow) {
-      let newIndex = this.currentScrolledItem + 5;
+    if (this.itemWidth === 0)
+      this.itemWidth = carrusel.scrollWidth / (this.watchProviders?.length ?? 1);
 
-      if (newIndex >= this.watchProviders!.length - 2)
-        newIndex = this.watchProviders!.length - 2;
+    this.currentScroll += carrusel.clientWidth - this.itemWidth;
 
-      this.currentScrolledItem = newIndex;
-      this.scrollCarrusel(carrusel);
+    if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth * 4)
+      this.currentScroll = carrusel.scrollWidth;
 
-      setTimeout(() => {
-        this.hideRightArrow = newIndex === this.watchProviders!.length - 2;
-        this.hideLeftArrow = false;
-        this.arrowsState.hideRightArrow = this.hideRightArrow;
-        this.arrowsState.hideLeftArrow = this.hideLeftArrow;
-      }, 250);
-    }
+    this.scrollCarrusel(carrusel);
+
+    setTimeout(() => {
+      this.hideRightArrow = this.currentScroll === carrusel.scrollWidth;
+      this.hideLeftArrow = false;
+    }, 250);
   }
 
-  onMouseOver() {
-    this.hideLeftArrow = this.arrowsState.hideLeftArrow;
-    this.hideRightArrow = this.arrowsState.hideRightArrow;
-  }
-
-  onMouseExit() {
-    this.hideRightArrow = true;
-    this.hideLeftArrow = true;
+  private scrollCarrusel(carrusel: HTMLUListElement) {
+    carrusel.scrollTo({
+      left: this.currentScroll,
+      behavior: "smooth"
+    });
   }
 
   getImageSrc(logoSrc: string): string {
     return `url(${this.baseImageUrl + logoSrc})`;
-  }
-
-  private scrollCarrusel(carrusel: HTMLUListElement) {
-    carrusel.children[this.currentScrolledItem].scrollIntoView({ behavior: "smooth", block: "center", inline: "start" });
   }
 }

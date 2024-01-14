@@ -2,10 +2,81 @@
   <header class="explore-filters-container">
     <div class="explore-filters">
       <label class="explore-search-container">
-        <i class="ti ti-search"></i>
-        <input type="text" class="explore-search" />
+        <div class="explore-search">
+          <input type="text" class="explore-search-input" placeholder="Search" (change)="queryValue = searchInput.value" (keydown)="searchInputKeydown($event, searchInput)" #searchInput />
+          <button [class.hide]="queryValue.length === 0" (click)="clearInput(searchInput)" title="Clear">
+            <i class="ti ti-close"></i>
+          </button>
+        </div>
+        <button class="explore-search-button-container" (click)="searchResults()" title="Search">
+          <i class="ti ti-search"></i>
+        </button>
       </label>
-      <ul></ul>
+      <div class="explore-types-container">
+        <h4 class="explore-types-title">Search for</h4>
+        <div class="explore-types">
+          <button class="explore-type" (click)="searchFor.movies = !searchFor.movies;" [class.hide]="!searchFor.movies">
+            <i class="ti ti-check"></i>
+            <span>Movies</span>
+          </button>
+          <button class="explore-type" (click)="searchFor.series = !searchFor.series;" [class.hide]="!searchFor.series">
+            <i class="ti ti-check"></i>
+            <span>Series</span>
+          </button>
+          <button class="explore-type" (click)="searchFor.adult = !searchFor.adult;" [class.hide]="!searchFor.adult">
+            <i class="ti ti-check"></i>
+            <span>Adult</span>
+          </button>
+        </div>
+        <div class="explore-types genres">
+          <button class="explore-genre" (click)="searchGenres.action = !searchGenres.action;" [class.hide]="!searchGenres.action">
+            <span>Action</span>
+          </button>
+          <button class="explore-genre" (click)="searchGenres.comedy = !searchGenres.comedy;" [class.hide]="!searchGenres.comedy">
+            <span>Comedy</span>
+          </button>
+          <button class="explore-genre" (click)="searchGenres.horror = !searchGenres.horror;" [class.hide]="!searchGenres.horror">
+            <span>Horror / Crime</span>
+          </button>
+          <button class="explore-genre" (click)="searchGenres.fantasy = !searchGenres.fantasy;" [class.hide]="!searchGenres.fantasy">
+            <span>Fantasy</span>
+          </button>
+          <button class="explore-genre" (click)="searchGenres.drama = !searchGenres.drama;" [class.hide]="!searchGenres.drama">
+            <span>Drama</span>
+          </button>
+          <button class="explore-genre" (click)="searchGenres.mystery = !searchGenres.mystery;" [class.hide]="!searchGenres.mystery">
+            <span>Mystery</span>
+          </button>
+          <button class="explore-genre" (click)="searchGenres.documentary = !searchGenres.documentary;" [class.hide]="!searchGenres.documentary">
+            <span>Documentary</span>
+          </button>
+          <button class="explore-genre" (click)="searchGenres.romance = !searchGenres.romance;" [class.hide]="!searchGenres.romance">
+            <span>Romance</span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
+  <section class="explore-movies">
+    <app-movies-carrusel [list]="queryMovies" [carruselTitle]="'Movies based on your query...'" ></app-movies-carrusel>
+    <app-featured-movies-carrusel [list]="actionMovies" [carruselTitle]="'Action movies'" [genreList]="moviesGenres"></app-featured-movies-carrusel>
+    <app-movies-carrusel [list]="comedyMovies" [carruselTitle]="'Comedy movies'"></app-movies-carrusel>
+    <app-movies-carrusel [list]="dramaMovies" [carruselTitle]="'Drama movies'"></app-movies-carrusel>
+    <app-featured-movies-carrusel [list]="horrorMovies" [carruselTitle]="'Horror movies'" [genreList]="moviesGenres"></app-featured-movies-carrusel>
+    <app-movies-carrusel [list]="fantasyMovies" [carruselTitle]="'Fantasy movies'"></app-movies-carrusel>
+    <app-movies-carrusel [list]="mysteryMovies" [carruselTitle]="'Mystery movies'"></app-movies-carrusel>
+    <app-featured-movies-carrusel [list]="romanceMovies" [carruselTitle]="'Romance movies'" [genreList]="moviesGenres"></app-featured-movies-carrusel>
+    <app-movies-carrusel [list]="documentaryMovies" [carruselTitle]="'Documentary movies'"></app-movies-carrusel>
+  </section>
+  <section class="explore-series">
+    <app-series-carrusel [list]="querySeries" [carruselTitle]="'Series based on your query...'" ></app-series-carrusel>
+    <app-featured-series-carrusel [list]="actionSeries" [carruselTitle]="'Action series'" [genreList]="seriesGenres"></app-featured-series-carrusel>
+    <app-series-carrusel [list]="comedySeries" [carruselTitle]="'Comedy series'"></app-series-carrusel>
+    <app-series-carrusel [list]="dramaSeries" [carruselTitle]="'Drama series'"></app-series-carrusel>
+    <app-featured-series-carrusel [list]="crimeSeries" [carruselTitle]="'Crime series'" [genreList]="seriesGenres"></app-featured-series-carrusel>
+    <app-series-carrusel [list]="fantasySeries" [carruselTitle]="'Fantasy series'"></app-series-carrusel>
+    <app-series-carrusel [list]="mysterySeries" [carruselTitle]="'Mystery series'"></app-series-carrusel>
+    <app-featured-series-carrusel [list]="romanceSeries" [carruselTitle]="'Romance series'" [genreList]="seriesGenres"></app-featured-series-carrusel>
+    <app-series-carrusel [list]="documentarySeries" [carruselTitle]="'Documentary series'"></app-series-carrusel>
+  </section>
 </section>

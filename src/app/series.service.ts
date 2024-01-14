@@ -135,4 +135,16 @@ export class SeriesService {
       }
     });
   }
+
+  searchSeries(query: string, includeAdult: boolean) {
+    return this.http.get<CatalogResponse<Serie>>(this.baseUrl + `/search/tv`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      },
+      params: {
+        query: query,
+        include_adult: includeAdult
+      }
+    });
+  }
 }

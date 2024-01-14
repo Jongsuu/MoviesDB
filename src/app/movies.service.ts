@@ -114,4 +114,16 @@ export class MoviesService {
       }
     });
   }
+
+  searchMovies(query: string, includeAdult: boolean) {
+    return this.http.get<CatalogResponse<Movie>>(this.baseUrl + `/search/movie`, {
+      headers: {
+        Authorization: this.getAuthorization()
+      },
+      params: {
+        query: query,
+        include_adult: includeAdult
+      }
+    });
+  }
 }

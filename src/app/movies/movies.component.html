@@ -15,4 +15,10 @@
   <app-movies-carrusel [list]="militaryMovies" [carruselTitle]="'Military and war movies'"></app-movies-carrusel>
   <app-movies-carrusel [list]="fantasyMovies" [carruselTitle]="'Fantasy movies'"></app-movies-carrusel>
   <app-movies-carrusel [list]="comedyMovies" [carruselTitle]="'Comedy movies'"></app-movies-carrusel>
+  <div>
+    <div class="explore-more">
+      <p>Still don't find what you're looking for?</p>
+      <a [routerLink]="'/explore'">Explore more filters</a>
+    </div>
+  </div>
 </section>

@@ -5,7 +5,7 @@
       <i class="ti ti-angle-right"></i>
     </a>
   </div>
-  <div class="watch-providers-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
+  <div class="watch-providers-container">
     <ul class="watch-providers" #carrusel>
       <li *ngFor="let item of watchProviders" [style.background-image]="getImageSrc(item.logo_path)" class="watch-providers-item">
         <div class="watch-providers-item-card">

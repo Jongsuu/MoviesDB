@@ -2,7 +2,7 @@
   <h2 class="series-carrusel-title">
     {{ carruselTitle }}
   </h2>
-  <div class="series-carrusel-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
+  <div class="series-carrusel-container">
     <ul class="series-carrusel" #carrusel>
       <app-series-carrusel-item *ngFor="let item of list" [item]="item"></app-series-carrusel-item>
     </ul>

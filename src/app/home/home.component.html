@@ -10,4 +10,10 @@
   <app-movies-carrusel [list]="recommendationMovies" [carruselTitle]="recommendationMoviesTitle"></app-movies-carrusel>
   <app-series-carrusel [list]="similarSeries" [carruselTitle]="similarSeriesTitle"></app-series-carrusel>
   <app-featured-movies-carrusel [list]="thrillerMovies" [carruselTitle]="'Movies that\'ll keep you awake'" [seeMoreLink]="'/movies'" [genreList]="moviesGenreList"></app-featured-movies-carrusel>
+  <div>
+    <div class="explore-more">
+      <p>Still don't find what you're looking for?</p>
+      <a [routerLink]="'/explore'">Explore more filters</a>
+    </div>
+  </div>
 </section>

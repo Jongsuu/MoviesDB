@@ -1,6 +1,6 @@
 <section *ngIf="credits">
   <h2 class="credits-carrusel-title">{{ creditsTitle }}</h2>
-  <div class="credits-carrusel-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
+  <div class="credits-carrusel-container">
     <ul class="credits-carrusel" #carrusel>
       <li *ngFor="let item of credits" class="credits-carrusel-item" [style.background-image]="getImageSrc(item.profile_path)">
         <article class="credits-carrusel-item-card">

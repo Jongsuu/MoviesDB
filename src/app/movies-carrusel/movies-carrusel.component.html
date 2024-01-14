@@ -1,6 +1,6 @@
 <section *ngIf="list">
   <h2 class="movies-carrusel-title">{{ carruselTitle }}</h2>
-  <div class="movies-carrusel-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
+  <div class="movies-carrusel-container">
     <ul class="movies-carrusel" #carrusel>
       <app-movies-carrusel-item *ngFor="let item of list" [item]="item"></app-movies-carrusel-item>
     </ul>

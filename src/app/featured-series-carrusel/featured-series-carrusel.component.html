@@ -8,7 +8,7 @@
       </a>
     </div>
   </div>
-  <div class="featured-series-carrusel-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseExit()">
+  <div class="featured-series-carrusel-container">
     <ul class="featured-series-carrusel" #carrusel>
       <app-featured-series-item *ngFor="let item of list" [item]="item" [canHover]="canHoverItem" [genreList]="genreList"></app-featured-series-item>
     </ul>
