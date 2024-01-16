@@ -51,6 +51,8 @@
 .card-info {
   display: flex;
   align-items: center;
+  width: auto;
+  flex-wrap: wrap;
   gap: 0.5rem;
   font-size: 1.1rem;
 }
@@ -111,4 +113,8 @@
   color: var(--primary-color);
   background-color: #fff;
   transform: scale(1.08);
+}
+
+@media(max-width: 1000px) {
+
 }

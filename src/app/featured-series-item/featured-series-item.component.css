@@ -61,7 +61,7 @@
 .featured-series-item-card-info {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
   width: 100%;
   gap: 0.25rem 0.5rem;
@@ -92,7 +92,7 @@
 
 .card-info-genre {
   border-radius: 0.25rem;
-  background-color: #81deb8;
+  background-color: #3db856;
   padding: 0.25rem;
   font-weight: 700;
 }
