@@ -1,4 +1,4 @@
-<li *ngIf="item" class="featured-series-item" [class.can-hover]="canHover">
+<li *ngIf="item" class="featured-series-item" [class.can-hover]="canHover && !isMobile">
   <a class="featured-series-item-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle"
     [routerLink]="['/series', item.id]">
     <article class="featured-series-item-card">

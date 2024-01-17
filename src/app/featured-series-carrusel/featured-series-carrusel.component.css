@@ -7,9 +7,9 @@
 }
 
 .featured-series-carrusel-title {
-  cursor: default;
   margin: 0;
   color: var(--primary-color);
+  cursor: default;
 }
 
 .featured-series-carrusel-seemore {
@@ -126,5 +126,29 @@
 
   .featured-series-carrusel-seemore span {
     color: #ea7feb;
+  }
+}
+
+@media(max-width: 1000px) {
+  .featured-series-carrusel-title {
+    font-size: 1.25rem;
+  }
+
+  .featured-series-carrusel {
+    height: 290px;
+  }
+
+  .featured-series-carrusel-arrow {
+    padding: 3rem 1rem;
+  }
+
+  .featured-series-carrusel-arrow i {
+    font-size: 1.25rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .featured-series-carrusel {
+    height: 275px;
   }
 }
