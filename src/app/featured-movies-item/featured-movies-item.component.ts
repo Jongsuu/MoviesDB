@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, Input, OnInit } from '@angular/core';
 import { Movie } from '../interfaces/movies/movies.interfaces';
 import { environment } from 'environment/environment';
@@ -16,12 +17,21 @@ export class FeaturedMoviesItemComponent implements OnInit {
   @Input() genreList: Genre[] | undefined;
   activeBackgroundStyle: string | undefined;
 
-  constructor() {
+  isMobile: boolean = false;
+
+  constructor(private responsive: BreakpointObserver) {
     this.baseImageUrl = environment.baseImgUrl;
   }
 
   ngOnInit(): void {
-    this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
+    this.responsive.observe(Breakpoints.XSmall).subscribe(result => {
+      this.isMobile = result.matches;
+    });
+    this.isMobile = this.responsive.isMatched(Breakpoints.XSmall);
+    if (this.isMobile)
+      this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
+    else
+      this.activeBackgroundStyle = `url(${this.getImageSrc(true)})`;
   }
 
   getImageSrc(mouseOver: boolean): string {
@@ -32,11 +42,17 @@ export class FeaturedMoviesItemComponent implements OnInit {
   }
 
   getGenreName(genreId: number): string | undefined {
+    if (this.isMobile)
+      this.item!.genre_ids = [this.item!.genre_ids[0]];
+
+    if (!this.item!.genre_ids.includes(genreId))
+      return undefined;
+
     return this.genreList?.find(genre => genre.id === genreId)?.name;
   }
 
   onMouseOver() {
-    if (this.canHover) {
+    if (this.canHover && !this.isMobile) {
       setTimeout(() => {
         this.activeBackgroundStyle = `url(${this.getImageSrc(true)})`;
       }, 150);
@@ -44,8 +60,10 @@ export class FeaturedMoviesItemComponent implements OnInit {
   }
 
   onMouseLeave() {
-    setTimeout(() => {
-      this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
-    }, 150);
+    if (!this.isMobile) {
+      setTimeout(() => {
+        this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
+      }, 150);
+    }
   }
 }

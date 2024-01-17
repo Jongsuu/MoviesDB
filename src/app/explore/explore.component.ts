@@ -91,14 +91,11 @@ export class ExploreComponent implements OnInit {
 
   searchInputKeydown(event: KeyboardEvent, searchInput: HTMLInputElement): void {
     this.queryValue = searchInput.value;
-    if (event.key === "Enter") {
+    if (event.key === "Enter")
       this.searchResults();
-    }
   }
 
   searchResults(): void {
-    console.log("SEARCH", this.queryValue);
-    console.log(this.searchFor);
     const searchGenres = { ...this.searchGenres };
     let includeAdult = this.searchFor.adult;
 

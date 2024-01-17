@@ -1,4 +1,4 @@
-<li *ngIf="item" class="featured-item" [class.can-hover]="canHover">
+<li *ngIf="item" class="featured-item" [class.can-hover]="canHover && !isMobile">
   <a class="featured-item-container" (mouseover)="onMouseOver()" (mouseleave)="onMouseLeave()" [style.background-image]="activeBackgroundStyle"
     [routerLink]="['/movies', item.id]">
     <article class="featured-item-card">

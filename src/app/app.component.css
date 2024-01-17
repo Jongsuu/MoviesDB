@@ -1,6 +1,5 @@
 .app-container {
   position: relative;
-  min-height: 100vh;
 }
 
 .scroll-arrow {
@@ -37,7 +36,8 @@
   top: 0;
   z-index: -2;
   height: 100%;
-  width: 100vw;
+  width: 100%;
+  min-height: 100vh;
   transform: rotate(180deg);
   background-color: rgb(255, 255, 255);
   background-image: radial-gradient(

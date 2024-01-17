@@ -128,3 +128,27 @@
     color: #ea7feb;
   }
 }
+
+@media(max-width: 1000px) {
+  .featured-movies-carrusel-title {
+    font-size: 1.25rem;
+  }
+
+  .featured-movies-carrusel {
+    height: 325px;
+  }
+
+  .featured-movies-carrusel-arrow {
+    padding: 3rem 1rem;
+  }
+
+  .featured-movies-carrusel-arrow i {
+    font-size: 1.25rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .featured-movies-carrusel {
+    height: 275px;
+  }
+}
