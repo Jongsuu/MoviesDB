@@ -16,7 +16,7 @@
   text-decoration: none;
   color: #000;
   display: flex;
-  gap: 0 1rem;
+  gap: 1rem;
   cursor: pointer;
   transform: scale(1);
   transition: all 0.3s ease-in-out;
@@ -32,7 +32,7 @@
   max-width: 300px;
   width: 300px;
   height: 200px;
-  min-height: 100px;
+  min-height: 200px;
   max-height: 200px;
   box-shadow: 2px 7px 15px -2px #000000;
 }
@@ -46,7 +46,8 @@
 .series-season-episodes-item-subtitle {
   display: flex;
   align-items: center;
-  gap: 0 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
 }
 
 .series-season-episodes-item-subtitle h3 {
@@ -75,7 +76,7 @@
 
 @media(max-width: 1500px) {
   .series-season-episodes-list-container {
-    grid-template-columns: minmax(300px, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .series-season-episodes-item-description {
@@ -92,7 +93,7 @@
 
 @media(max-width: 700px) {
   .series-season-episodes-item {
-    gap: 0 0.5rem;
+    column-gap: 0.5rem;
   }
 
   .series-season-episodes-item-title {
@@ -116,5 +117,18 @@
 @media(max-width: 600px) {
   .series-season-episodes-item-title {
     font-size: 1.1rem;
+  }
+}
+
+@media(max-width: 450px) {
+  .series-season-episodes-item {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .series-season-episodes-item-poster {
+    min-width: auto;
+    max-width: 100%;
+    width: 100%;
   }
 }

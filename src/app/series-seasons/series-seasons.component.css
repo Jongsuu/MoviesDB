@@ -6,6 +6,8 @@
   display: flex;
   align-items: center;
   width: 100%;
+  flex-wrap: wrap;
+  gap: 2rem 0;
 }
 
 .series-seasons-select-container {
@@ -38,7 +40,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0 3rem;
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
   width: 60%;
 }
 
@@ -112,5 +115,28 @@
 @media(max-width: 900px) {
   .series-seasons-content {
     padding: 0.5rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .series-seasons-header {
+    justify-content: center;
+  }
+
+  .series-seasons-select-container {
+    width: 100%;
+  }
+
+  .series-seasons-header-actions {
+    width: 100%;
+    column-gap: 2rem;
+    justify-content: center;
+  }
+}
+
+@media(max-width: 400px) {
+  .series-seasons-header-actions {
+    width: auto;
+    column-gap: 1.5rem;
   }
 }
