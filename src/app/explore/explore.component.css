@@ -207,3 +207,16 @@
     color: #111;
   }
 }
+
+@media(max-width: 1000px) {
+  .explore-filters {
+    width: 90%;
+    padding: 0 0.5rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .explore-container {
+    padding: 2rem 0 1rem 1rem;
+  }
+}

@@ -28,10 +28,7 @@ export class FeaturedMoviesItemComponent implements OnInit {
       this.isMobile = result.matches;
     });
     this.isMobile = this.responsive.isMatched(Breakpoints.XSmall);
-    if (this.isMobile)
-      this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
-    else
-      this.activeBackgroundStyle = `url(${this.getImageSrc(true)})`;
+    this.activeBackgroundStyle = `url(${this.getImageSrc(false)})`;
   }
 
   getImageSrc(mouseOver: boolean): string {

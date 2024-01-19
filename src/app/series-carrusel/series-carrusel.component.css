@@ -68,3 +68,13 @@
     color: #e3e3e3;
   }
 }
+
+@media(max-width: 1000px) {
+  .series-carrusel {
+    height: 160px;
+  }
+
+  .series-carrusel-title {
+    font-size: 1.25rem;
+  }
+}

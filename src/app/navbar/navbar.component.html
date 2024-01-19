@@ -5,7 +5,7 @@
     </a>
     <ul class="nav-list">
       <li *ngFor="let link of links">
-        <a class="nav-item nav-link" [routerLink]="[link.url]">
+        <a class="nav-item nav-link" [routerLink]="[link.url]" [class.nav-link-active]="link.active">
           <span>{{ link.text }}</span>
         </a>
       </li>

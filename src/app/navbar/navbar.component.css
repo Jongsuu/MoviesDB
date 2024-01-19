@@ -14,6 +14,7 @@ nav {
   transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   padding: 1rem;
 }
 
@@ -33,12 +34,12 @@ nav {
 
 .nav-list {
   width: 100%;
-  justify-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
   list-style: none;
-  gap: 0 5rem;
+  flex-wrap: wrap;
+  gap: 1rem 5rem;
   margin: 0;
 }
 
@@ -75,7 +76,7 @@ nav {
   clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%, 100% 100%, 100% 0%);
 }
 
-.nav-item:hover::before {
+.nav-item:hover::before, .nav-item.nav-link-active::before {
   transform: translate3d(0, 2px, 0) scale3d(1.08, 3, 1);
   clip-path: polygon(0% 0%, 0% 100%, 50% 100%, 50% 0, 50% 0, 50% 100%, 50% 100%, 0 100%, 100% 100%, 100% 0%);
   color: var(--primary-color);
@@ -87,7 +88,7 @@ nav {
   color: var(--analogous-color-1);
 }
 
-.nav-item:hover span {
+.nav-item:hover span, .nav-item.nav-link-active span {
   transform: translate3d(0, -2px, 0);
 }
 
@@ -114,5 +115,41 @@ nav {
 
   .nav-list {
     gap: 0 3rem;
+  }
+}
+
+@media(max-width: 600px) {
+  nav {
+    padding: 0 1rem;
+  }
+
+  .nav-list {
+    gap: 0 2rem;
+  }
+
+  .nav-list li:first-child {
+    display: none;
+  }
+}
+
+@media(max-width: 425px) {
+  nav {
+    padding: 0;
+  }
+
+  .nav-container {
+    border-radius: 0;
+    padding: 1rem 0.5rem;
+  }
+}
+
+@media(max-width: 350px) {
+  .nav-container {
+    padding: 1rem 0.2rem;
+  }
+
+  .nav-logo {
+    width: 50px;
+    height: 50px;
   }
 }
