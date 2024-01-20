@@ -44,4 +44,8 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
+
+  onNavigate(): void {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
 }
