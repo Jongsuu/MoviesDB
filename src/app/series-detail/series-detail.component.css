@@ -223,6 +223,10 @@
 }
 
 @media(max-width: 600px) {
+  .series-detail-more-info {
+    padding: 2.5rem 0.75rem 1rem 0.75rem;
+  }
+
   .series-detail h1 {
     font-size: 2.5rem;
   }

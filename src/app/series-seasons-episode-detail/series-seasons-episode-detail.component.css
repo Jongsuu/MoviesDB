@@ -13,6 +13,10 @@
   color: #fff;
 }
 
+.episode-detail-info {
+  width: 100%;
+}
+
 .episode-detail-content {
   background-image: linear-gradient(to right, rgb(37, 19, 33), calc(-510px + 50vw), rgba(37, 19, 33, 0.6) 50%, rgba(37, 19, 33, 0.6) 100%);
   height: 725px;
@@ -25,7 +29,6 @@
 }
 
 .episode-detail-poster {
-  min-width: 500px;
   width: 475px;
   height: 350px;
   border-radius: 1rem;
@@ -41,12 +44,10 @@
 .episode-detail-card-info {
   display: flex;
   align-items: baseline;
-  gap: 0 1rem;
-}
-
-.card-info-star i {
-  color: #fbe4f3;
-  font-weight: 900;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .card-info-star {
@@ -58,13 +59,18 @@
   font-weight: 700;
 }
 
+.card-info-star i {
+  color: #fbe4f3;
+  font-weight: 900;
+}
+
 .episode-detail h2 {
   margin-top: 0;
+  margin-bottom: 0;
   font-size: 2.5rem;
 }
 
 .episode-detail-card-info h2.episode-detail-length {
-  margin-top: 0;
   font-size: 2rem;
 }
 
@@ -74,25 +80,7 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   font-size: 1.2rem;
-}
-
-.card-info-votes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0 0.3rem;
-  border-radius: 0.25rem;
-  background-color: var(--primary-color);
-  padding: 0.5rem;
-}
-
-.card-info-votes span {
-  font-weight: 700;
-}
-
-.card-info-votes i {
-  color: #fbe4f3;
-  font-weight: 900;
+  width: 100%;
 }
 
 .episode-detail-description {
@@ -114,5 +102,83 @@
 @media(prefers-color-scheme: dark) {
   .episode-detail-more-info {
     background-color: #2b2b2b;
+  }
+}
+
+@media(max-width: 1600px) {
+  .episode-detail-description {
+    width: 50ch;
+  }
+}
+
+@media(max-width: 1200px) {
+  .episode-detail-poster {
+    width: 375px;
+    height: 275px;
+  }
+
+  .episode-detail-description {
+    width: 45ch;
+  }
+}
+
+@media(max-width: 1000px) {
+  .episode-detail-content {
+    padding: 1rem;
+  }
+
+  .episode-detail-poster {
+    display: none;
+  }
+
+  .episode-detail h1 {
+    font-size: 3.5rem;
+  }
+
+  .episode-detail h2, .episode-detail-card-info h2.episode-detail-length {
+    font-size: 2rem;
+  }
+
+  .episode-detail-description {
+    width: 100%;
+    -webkit-line-clamp: 5;
+    font-size: 1.1rem;
+  }
+
+  .card-info-star {
+    padding: 0.25rem;
+  }
+
+  .episode-detail-more-info {
+    padding: 2.5rem 0 1rem 0.75rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .episode-detail h1 {
+    font-size: 2.5rem;
+  }
+
+  .episode-detail h2, .episode-detail-card-info h2.episode-detail-length {
+    font-size: 1.5rem;
+  }
+
+  .episode-detail-description {
+    -webkit-line-clamp: 4;
+    font-size: 1rem;
+  }
+
+  .card-info-star {
+    font-size: 1rem;
+  }
+
+  .episode-detail-more-info {
+    padding: 2.5rem 0 1rem 0.5rem;
+  }
+}
+
+@media(max-width: 450px) {
+  .episode-detail h1 {
+    font-size: 2rem;
   }
 }

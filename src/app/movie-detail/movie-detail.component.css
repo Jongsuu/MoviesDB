@@ -257,6 +257,10 @@
   .movie-detail-play-link span {
     display: none;
   }
+
+  .movie-detail-more-info {
+    padding: 2.5rem 0 1rem 0.5rem;
+  }
 }
 
 @media(max-width: 450px) {
