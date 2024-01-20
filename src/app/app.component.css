@@ -1,5 +1,6 @@
 .app-container {
   position: relative;
+  min-height: 100vh;
 }
 
 .scroll-arrow {
@@ -45,6 +46,28 @@
     hsla(0, 0%, 100%, 0) 0,
     rgba(252, 205, 238, 0.5) 100%
   );
+}
+
+footer {
+  width: 100%;
+  background: #242424;
+  box-shadow: 0 -6px 8px -3px #000000;
+}
+
+footer p {
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+  color: #fff;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer svg {
+  height: 20px;
 }
 
 @media(prefers-color-scheme: dark) {

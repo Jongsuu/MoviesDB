@@ -37,6 +37,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationStart) {
+        window.scrollTo({ top: 0, behavior: "instant" });
         this.links.forEach(item => {
           item.active = item.url === event.url;
         });
