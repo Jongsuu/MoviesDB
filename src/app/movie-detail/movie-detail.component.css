@@ -166,7 +166,7 @@
 
 .movie-detail-more-info {
   background-color: #e8e8e8;
-  padding: 2.5rem 0 1rem 1.5rem;
+  padding: 2.5rem 0 5rem 1.5rem;
   position: relative;
 }
 
@@ -228,7 +228,7 @@
   }
 
   .movie-detail-more-info {
-    padding: 2.5rem 0 1rem 0.75rem;
+    padding: 2.5rem 0 5rem 0.75rem;
   }
 }
 
@@ -259,7 +259,7 @@
   }
 
   .movie-detail-more-info {
-    padding: 2.5rem 0 1rem 0.5rem;
+    padding: 2.5rem 0 5rem 0.5rem;
   }
 }
 

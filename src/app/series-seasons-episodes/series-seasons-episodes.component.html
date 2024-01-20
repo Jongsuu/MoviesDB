@@ -1,6 +1,6 @@
 <section *ngIf="showEpisodes && episodes" class="series-season-episodes-container">
   <ul class="series-season-episodes-list-container">
-    <li *ngFor="let episode of episodes" style="width: 100%;">
+    <li *ngFor="let episode of episodes" style="width: 100%;" class="reveal">
       <article style="width: 100%;">
         <a class="series-season-episodes-item" [routerLink]="['/series', episode.show_id, 'season', episode.season_number, 'episode', episode.episode_number]">
           <img src="{{ getImageSrc(episode.still_path) }}" class="series-season-episodes-item-poster" alt="{{ getEpisodeTitle(episode) + ' poster'}}"/>
