@@ -6,6 +6,7 @@
 .explore-filters-container {
   display: flex;
   justify-content: center;
+  padding-right: 2rem;
 }
 
 .explore-filters {
@@ -18,7 +19,7 @@
   align-items: stretch;
   border-radius: 24px;
   z-index: 3;
-  width: 80%;
+  width: 100%;
   min-height: 45px;
   box-shadow: none;
   transition: all 0.2s ease-in-out;
@@ -220,8 +221,21 @@
     padding: 2rem 0 1rem 1rem;
   }
 
+  .explore-filters {
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .explore-filters-container {
+    padding-right: 1rem;
+  }
+
   .explore-types {
     padding-left: 0.5rem;
+  }
+
+  .explore-search-button-container {
+    padding: 0 1rem;
   }
 }
 
