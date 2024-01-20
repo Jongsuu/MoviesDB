@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CreditsResponseItem } from '../interfaces/common/common.interfaces';
 import { environment } from 'environment/environment';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-credits',
@@ -19,23 +20,38 @@ export class CreditsComponent implements OnInit {
   private currentScroll = 0;
   private itemWidth = 0;
 
-  constructor() {
+  isMobile: boolean = false;
+
+  constructor(private responsive: BreakpointObserver) {
     this.baseImageUrl = environment.baseImgOriginalUrl;
   }
 
   ngOnInit(): void {
     if (this.credits && this.credits.length === 0)
       this.credits = undefined;
+
+    this.responsive.observe(Breakpoints.XSmall).subscribe(result => {
+      this.isMobile = result.matches;
+    });
+    this.isMobile = this.responsive.isMatched(Breakpoints.XSmall);
   }
 
   onClickLeftArrow(carrusel: HTMLUListElement) {
     if (this.itemWidth === 0)
       this.itemWidth = carrusel.scrollWidth / (this.credits?.length ?? 1);
 
-    this.currentScroll -= carrusel.clientWidth + this.itemWidth;
+    if (this.isMobile) {
+      this.currentScroll -= carrusel.clientWidth + this.itemWidth / 2;
 
-    if (this.currentScroll <= this.itemWidth * 4)
-      this.currentScroll = 0;
+      if (this.currentScroll <= this.itemWidth)
+        this.currentScroll = 0;
+    }
+    else {
+      this.currentScroll -= carrusel.clientWidth + this.itemWidth;
+
+      if (this.currentScroll <= this.itemWidth * 4)
+        this.currentScroll = 0;
+    }
 
     this.scrollCarrusel(carrusel);
 
@@ -49,10 +65,18 @@ export class CreditsComponent implements OnInit {
     if (this.itemWidth === 0)
       this.itemWidth = carrusel.scrollWidth / (this.credits?.length ?? 1);
 
-    this.currentScroll += carrusel.clientWidth - this.itemWidth;
+    if (this.isMobile) {
+      this.currentScroll += carrusel.clientWidth - this.itemWidth / 2;
 
-    if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth * 4)
-      this.currentScroll = carrusel.scrollWidth;
+      if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth)
+        this.currentScroll = carrusel.scrollWidth;
+    }
+    else {
+      this.currentScroll += carrusel.clientWidth - this.itemWidth;
+
+      if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth * 4)
+        this.currentScroll = carrusel.scrollWidth;
+    }
 
     this.scrollCarrusel(carrusel);
 

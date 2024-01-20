@@ -153,3 +153,22 @@
     color: #e3e3e3;
   }
 }
+
+@media(max-width: 1000px) {
+  .watch-providers-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .watch-providers-item {
+    min-width: 100px;
+    max-width: 225px;
+    width: 225px;
+    height: 150px;
+  }
+
+  .watch-providers {
+    height: 160px;
+  }
+}

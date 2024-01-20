@@ -47,7 +47,7 @@
   );
 }
 
-@media (prefers-color-scheme: dark) {
+@media(prefers-color-scheme: dark) {
   .background {
     transform: none;
     background-color: rgb(10, 10, 10);
@@ -56,5 +56,14 @@
       rgba(120, 119, 198, 0.3),
       rgba(255, 255, 255, 0)
     );
+  }
+}
+
+@media(max-width: 600px) {
+  .scroll-arrow {
+    bottom: 1rem;
+    left: 1rem;
+    padding: 0.3rem 0.5rem;
+    font-size: 2rem;
   }
 }

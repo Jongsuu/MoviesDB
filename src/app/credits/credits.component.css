@@ -112,3 +112,28 @@
     color: #e3e3e3;
   }
 }
+
+@media(max-width: 1000px) {
+  .credits-carrusel-title {
+    font-size: 1.25rem;
+  }
+
+  .credits-carrusel-arrow {
+    padding: 3rem 1rem;
+  }
+
+  .credits-carrusel-arrow i {
+    font-size: 1.25rem;
+  }
+
+  .credits-carrusel {
+    height: 290px;
+  }
+
+  .credits-carrusel-item {
+    min-width: 150px;
+    max-width: 200px;
+    width: 200px;
+    max-height: 275px;
+  }
+}
