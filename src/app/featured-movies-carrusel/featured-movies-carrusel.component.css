@@ -3,7 +3,7 @@
   margin-left: 2rem;
   display: inline-flex;
   align-items: center;
-  gap: 0 2rem;
+  gap: 2rem;
 }
 
 .featured-movies-carrusel-title {
@@ -134,6 +134,10 @@
     font-size: 1.25rem;
   }
 
+  .featured-movies-carrusel-seemore {
+    font-size: 1.1rem;
+  }
+
   .featured-movies-carrusel {
     height: 290px;
   }
@@ -148,7 +152,22 @@
 }
 
 @media(max-width: 600px) {
+  .featured-movies-carrusel-header {
+    margin-left: 1rem;
+    gap: 1rem;
+  }
+
+  .featured-movies-carrusel-arrow {
+    padding: 2rem 0.5rem;
+  }
+
+  .featured-movies-carrusel-arrow i {
+    font-size: 1.1rem;
+  }
+
   .featured-movies-carrusel {
-    height: 275px;
+    height: 240px;
+    gap: 0 1rem;
+    padding: 1rem 0.75rem 1.5rem;
   }
 }

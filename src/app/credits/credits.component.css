@@ -137,3 +137,31 @@
     max-height: 275px;
   }
 }
+
+@media(max-width: 600px) {
+  .credits-carrusel-arrow {
+    padding: 2rem 0.5rem;
+  }
+
+  .credits-carrusel-arrow i {
+    font-size: 1.1rem;
+  }
+
+  .credits-carrusel {
+    height: 240px;
+    gap: 0 1rem;
+    padding: 1rem 0.75rem 1rem;
+  }
+
+  .credits-carrusel-item {
+    min-width: 125px;
+    max-width: 200px;
+    width: 125px;
+    max-height: 225px;
+  }
+
+  .credits-carrusel-item-card {
+    padding: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+}

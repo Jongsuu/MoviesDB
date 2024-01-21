@@ -35,7 +35,7 @@ export class MoviesCarruselComponent implements OnInit {
       this.itemWidth = carrusel.scrollWidth / (this.list?.length ?? 1);
 
     if (this.isMobile) {
-      this.currentScroll -= carrusel.clientWidth + this.itemWidth / 2;
+      this.currentScroll -= carrusel.clientWidth;
 
       if (this.currentScroll <= this.itemWidth)
         this.currentScroll = 0;
@@ -60,7 +60,7 @@ export class MoviesCarruselComponent implements OnInit {
       this.itemWidth = carrusel.scrollWidth / (this.list?.length ?? 1);
 
     if (this.isMobile) {
-      this.currentScroll += carrusel.clientWidth - this.itemWidth / 2;
+      this.currentScroll += carrusel.clientWidth;
 
       if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth)
         this.currentScroll = carrusel.scrollWidth;

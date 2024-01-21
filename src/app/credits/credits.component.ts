@@ -41,7 +41,7 @@ export class CreditsComponent implements OnInit {
       this.itemWidth = carrusel.scrollWidth / (this.credits?.length ?? 1);
 
     if (this.isMobile) {
-      this.currentScroll -= carrusel.clientWidth + this.itemWidth / 2;
+      this.currentScroll -= carrusel.clientWidth;
 
       if (this.currentScroll <= this.itemWidth)
         this.currentScroll = 0;
@@ -66,7 +66,7 @@ export class CreditsComponent implements OnInit {
       this.itemWidth = carrusel.scrollWidth / (this.credits?.length ?? 1);
 
     if (this.isMobile) {
-      this.currentScroll += carrusel.clientWidth - this.itemWidth / 2;
+      this.currentScroll += carrusel.clientWidth;
 
       if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth)
         this.currentScroll = carrusel.scrollWidth;

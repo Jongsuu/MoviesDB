@@ -130,9 +130,10 @@
   }
 }
 
-@media(max-width: 700px) {
+@media(max-width: 600px) {
   .featured-movie {
     height: 350px;
+    padding: 1rem;
   }
 
   .featured-movie h1 {

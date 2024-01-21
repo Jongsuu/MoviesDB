@@ -72,6 +72,15 @@
 @media(max-width: 1000px) {
   .series-carrusel {
     height: 160px;
+    gap: 0 1rem;
+  }
+
+  .series-carrusel-arrow {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .series-carrusel-arrow i {
+    font-size: 1.1rem;
   }
 
   .series-carrusel-title {

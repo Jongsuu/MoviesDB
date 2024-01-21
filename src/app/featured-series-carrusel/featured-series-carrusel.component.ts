@@ -41,13 +41,18 @@ export class FeaturedSeriesCarruselComponent implements OnInit {
       if (this.itemWidth === 0)
         this.itemWidth = carrusel.scrollWidth / (this.list?.length ?? 1);
 
-      if (this.isMobile)
-        this.currentScroll -= carrusel.clientWidth + this.itemWidth / 2;
-      else
+      if (this.isMobile) {
+        this.currentScroll -= carrusel.clientWidth;
+
+        if (this.currentScroll <= this.itemWidth)
+          this.currentScroll = 0;
+      }
+      else {
         this.currentScroll -= carrusel.clientWidth + this.itemWidth;
 
-      if (this.currentScroll <= this.itemWidth)
-        this.currentScroll = 0;
+        if (this.currentScroll <= this.itemWidth * 2)
+          this.currentScroll = 0;
+      }
 
       this.scrollCarrusel(carrusel);
 
@@ -65,13 +70,18 @@ export class FeaturedSeriesCarruselComponent implements OnInit {
       if (this.itemWidth === 0)
         this.itemWidth = carrusel.scrollWidth / (this.list?.length ?? 1);
 
-      if (this.isMobile)
-        this.currentScroll += carrusel.clientWidth - this.itemWidth / 2;
-      else
+      if (this.isMobile) {
+        this.currentScroll += carrusel.clientWidth;
+
+        if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth)
+          this.currentScroll = carrusel.scrollWidth;
+      }
+      else {
         this.currentScroll += carrusel.clientWidth - this.itemWidth;
 
-      if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth)
-        this.currentScroll = carrusel.scrollWidth;
+        if (this.currentScroll >= carrusel.scrollWidth - this.itemWidth * 2)
+          this.currentScroll = carrusel.scrollWidth;
+      }
 
       this.scrollCarrusel(carrusel);
 
