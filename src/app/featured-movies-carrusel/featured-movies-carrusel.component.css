@@ -152,9 +152,17 @@
 }
 
 @media(max-width: 600px) {
+  .featured-movies-carrusel-title {
+    font-size: 1.1rem;
+  }
+
   .featured-movies-carrusel-header {
     margin-left: 1rem;
     gap: 1rem;
+  }
+
+  .featured-movies-carrusel-seemore {
+    font-size: 1rem;
   }
 
   .featured-movies-carrusel-arrow {

@@ -76,7 +76,7 @@
   }
 
   .movies-carrusel-arrow {
-    padding: 1.5rem 0.5rem;
+    padding: 2rem 0.5rem;
   }
 
   .movies-carrusel-arrow i {
@@ -85,5 +85,21 @@
 
   .movies-carrusel-title {
     font-size: 1.25rem;
+  }
+}
+
+@media(max-width: 600px) {
+  .movies-carrusel-title {
+    font-size: 1.1rem;
+  }
+
+  .movies-carrusel-arrow {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .movies-carrusel {
+    height: 140px;
+    gap: 0 1rem;
+    padding: 1rem 0.75rem 1.5rem;
   }
 }
